@@ -1,0 +1,214 @@
+﻿<UserControl x:Class="BirthClinicGUI.Views.SpecificAppointmentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BirthClinicGUI.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="400"
+             Background="Gainsboro">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="0" Grid.Column="0" Header="Room information" Margin="5" MinWidth="150">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" 
+                       Content="Room No:" 
+                       Margin="5"/>
+                <TextBlock Grid.Row="0" Grid.Column="1"
+                           Text="{Binding Appointment.Room.RoomNumber}"
+                           Margin="5"
+                           VerticalAlignment="Center"/>
+
+                <Label Grid.Row="1" Grid.Column="0" 
+                       Content="Room type:" 
+                       Margin="5"/>
+                <TextBlock Grid.Row="1" Grid.Column="1"
+                           Text="{Binding Appointment.Room.RoomType}"
+                           Margin="5"
+                           VerticalAlignment="Center"/>
+
+                <Label Grid.Row="2" Grid.Column="0"
+                       Content="Start Date:"
+                       Margin="5"/>
+                <TextBlock Grid.Row="2" Grid.Column="1"
+                           Text="{Binding Appointment.DisplayStartDateTime}"
+                           Margin="5"
+                           VerticalAlignment="Center"/>
+
+                <Label Grid.Row="3" Grid.Column="0"
+                       Content="End Date:"
+                       Margin="5,5,5,0" Height="26" VerticalAlignment="Top"/>
+                <TextBlock Grid.Row="3" Grid.Column="1"
+                           Text="{Binding Appointment.DisplayEndDateTime}"
+                           Margin="5"
+                           VerticalAlignment="Center"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="0" Grid.Column="1" Header="Child information" Margin="5" MinWidth="180">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" 
+                       Content="First name:" 
+                       Margin="5"/>
+                <TextBlock Grid.Row="0" Grid.Column="1"
+                           Text="{Binding Appointment.Child.FirstName}"
+                           Margin="5"
+                           VerticalAlignment="Center"/>
+
+                <Label Grid.Row="1" Grid.Column="0"
+                       Content="Last name:"
+                       Margin="5"/>
+                <TextBlock Grid.Row="1" Grid.Column="1"
+                           Text="{Binding Appointment.Child.LastName}"
+                           Margin="5"
+                           VerticalAlignment="Center"/>
+
+                <Label Grid.Row="2" Grid.Column="0"
+                       Content="Weight:"
+                       Margin="5"/>
+                <TextBlock Grid.Row="2" Grid.Column="1"
+                           Text="{Binding Appointment.Child.Weight}"
+                           Margin="5"
+                           VerticalAlignment="Center"/>
+
+                <Label Grid.Row="3" Grid.Column="0"
+                       Content="Length:"
+                       Margin="5"/>
+                <TextBlock Grid.Row="3" Grid.Column="1"
+                           Text="{Binding Appointment.Child.Length}"
+                           Margin="5"
+                           VerticalAlignment="Center"/>
+
+                <Label Grid.Row="4" Grid.Column="0"
+                       Content="Birth date:"
+                       Margin="5"/>
+                <TextBlock Grid.Row="4" Grid.Column="1"
+                           Text="{Binding Appointment.Child.BirthDate}"
+                           Margin="5"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Grid.Column="0" Header="Father information" Margin="5" MinWidth="180">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0"
+                       Content="CPR"
+                       Margin="5"/>
+                <TextBlock Grid.Row="0" Grid.Column="1"
+                           Text="{Binding Appointment.Parents.DadCPR}"
+                           Margin="5"
+                           VerticalAlignment="Center"/>
+
+                <Label Grid.Row="1" Grid.Column="0"
+                       Content="First name"
+                       Margin="5"/>
+                <TextBlock Grid.Row="1" Grid.Column="1"
+                           Text="{Binding Appointment.Parents.DadFirstName}"
+                           Margin="5"
+                           VerticalAlignment="Center"/>
+
+                <Label Grid.Row="2" Grid.Column="0"
+                       Content="Last name"
+                       Margin="5"/>
+                <TextBlock Grid.Row="2" Grid.Column="1"
+                           Text="{Binding Appointment.Parents.DadLastName}"
+                           Margin="5"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Grid.Column="1" Header="Mother information" Margin="5" MinWidth="180">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0"
+                       Content="CPR"
+                       Margin="5"/>
+                <TextBlock Grid.Row="0" Grid.Column="1"
+                           Text="{Binding Appointment.Parents.MomCPR}"
+                           Margin="5"
+                           VerticalAlignment="Center"/>
+
+                <Label Grid.Row="1" Grid.Column="0"
+                       Content="First name"
+                       Margin="5"/>
+                <TextBlock Grid.Row="1" Grid.Column="1"
+                           Text="{Binding Appointment.Parents.MomFirstName}"
+                           Margin="5"
+                           VerticalAlignment="Center"/>
+
+                <Label Grid.Row="2" Grid.Column="0"
+                       Content="Last name"
+                       Margin="5"/>
+                <TextBlock Grid.Row="2" Grid.Column="1"
+                           Text="{Binding Appointment.Parents.MomLastName}"
+                           Margin="5"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Header="Clinicians information" Margin="5">
+            <Grid>
+                <ListBox ItemsSource="{Binding Appointment.Clinicians}"
+                         DisplayMemberPath="Display"
+                         IsSynchronizedWithCurrentItem="True"
+                         Background="Gainsboro"/>
+
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

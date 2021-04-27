@@ -1,0 +1,159 @@
+﻿<Window x:Class="BirthClinicGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BirthClinicGUI"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:viewModels="clr-namespace:BirthClinicGUI.ViewModels"
+        xmlns:birthClinicGui="clr-namespace:BirthClinicGUI"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        mc:Ignorable="d"
+        Title="Birth Clinic App" Height="500" Width="680" Background="LemonChiffon"
+        Name="WindowTop" Tag="{Binding DelAppointmentCommand}">
+
+    <Grid HorizontalAlignment="Center">
+    <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0"
+                   Name="TitleText" 
+                   Content="Birth Clinic Database"
+                   FontSize="20"
+                   Margin="20"
+                   HorizontalAlignment="Center"
+                   />
+
+        <WrapPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">
+            <Button 
+                Name="AddAppointBtn"
+                Content="Add Appointment"
+                Margin="5"
+                Padding="5"
+                Command="{Binding AddAppointmentCommand}"/>
+            <Button
+                    Name="DelAppointBtn"
+                    Content="Cancel Appointment"
+                    Margin="5"
+                    Padding="5"
+                    Command="{Binding DelAppointmentCommand}"/>
+        </WrapPanel>
+
+        <Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center"
+                Name="SeeAvailRoomsBtn"
+                Content="See Rooms Status"
+                Padding="5"
+                Command="{Binding StatusRoomsCommand}"
+                />
+
+        <Label Grid.Row="3" Grid.Column="0"
+               Name="SeeAppointBtn"
+               Content="Current Appointments:"
+               Padding="5"
+               Margin="10"
+               HorizontalAlignment="Center"/>
+
+        <Label Grid.Row="3" Grid.Column="0"
+               Content="(Double click at appointment for details)"
+               Margin="0,0,0,0"
+               HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="9"/>
+
+        <Label Grid.Row="3" Grid.Column="0"
+               Content="(Double click clinicians field for details)"
+               Margin="10,0,0,0"
+               HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="9"/>
+
+        <DataGrid Grid.Row="4"
+                  ItemsSource="{Binding Appointments}"
+                  SelectedIndex="{Binding AppointmentIndex}"
+                  AutoGenerateColumns="False"
+                  IsSynchronizedWithCurrentItem="True"
+                  CanUserAddRows="False">
+
+            <DataGrid.InputBindings>
+                <MouseBinding
+                    MouseAction="LeftDoubleClick"
+                    Command="{Binding SelectAppointmentCommand}"/>
+            </DataGrid.InputBindings>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Room No." Binding="{Binding Room.RoomNumber}" MaxWidth="60" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Room Type" Binding="{Binding Room.RoomType}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Fathers CPR" Binding="{Binding Parents.DadCPR}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Mothers CPR" Binding="{Binding Parents.MomCPR}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Booked on" Binding="{Binding DisplayStartDateTime}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Booked for" Binding="{Binding BookedFor}" IsReadOnly="True"/>
+
+                <DataGridTemplateColumn Header="Clinicians" MinWidth="120">
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding Clinicians, Mode=OneWay}"
+                                      DisplayMemberPath="Display"
+                                      SelectedIndex="0">
+                            </ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+
+        <Expander Grid.Row="5" Header="Add Clinitian" Margin="0,10,0,0">
+            <GroupBox>
+                <Grid HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" 
+                           Content="Clinician First name:*"
+                           Margin="5"/>
+
+                    <TextBox Grid.Row="0" Grid.Column="1"
+                             Text="{Binding ClinicianFirstName}"
+                             MinWidth="100"
+                             Margin="5"
+                             Name="txbFirstName"/>
+
+                    <Label Grid.Row="1" Grid.Column="0"
+                           Content="Clinician Last name:*"
+                           Margin="5"/>
+
+                    <TextBox Grid.Row="1" Grid.Column="1"
+                             Text="{Binding ClinicianLastName}"
+                             MinWidth="100"
+                             Margin="5"
+                             Name="txbLastName"/>
+
+                    <Button Grid.Row="2" Grid.Column="0"
+                            Command="{Binding AddClinician}"
+                            Content="Add Clinitian"
+                            Margin="5"
+                            Padding="5"/>
+                </Grid>
+            </GroupBox>
+
+        </Expander>
+
+        <Image Grid.Row="6" Grid.Column="0" Source="../Images/CTElogo.png" Stretch="Uniform" Opacity="1.0" MaxWidth="120" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10"/>
+    </Grid>
+</Window>

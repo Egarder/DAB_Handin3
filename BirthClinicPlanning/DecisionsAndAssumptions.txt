@@ -1,0 +1,48 @@
+Our decisions and assumptions while making this project.
+
+MUST:
+- Must be possible to add an appointment
+- In this appointment it must be possible to choose the room number in which the appointment takes place
+- It must be possible to put in a time and date for the appointment.
+- There must be validation so that no room is double booked.
+- It must be possible to choose, what room the appointment takes place in
+- It must be possible to add clinicians to the appointment
+- It must be possible to add first- and last name of both the mother and father of the appointment,
+  however it must not be a requirement that the dad is known
+- It should be possible to cancel an appointemt 
+- It must be possible to see all appointments scheduled for at least five days forward
+- It must be possible to see all clinicians attached to the appointment
+- It must be possible to see the current status of any given room, the infomation of the patients in the room 
+  and the clinicians assigned to that appointment. 
+- It should be possible, when parents are moved to a maternity room for the baby info to be added.
+
+SHOULD:
+- It should be possible to valtidate the clinicians schedule so that they are not double 
+booked - however this will not be implemented at this time.
+- It should be possible to remove clinicians from an appointemt - however this will not be implemented at this time.
+- The application should validate CPR-numbers - this has been implemented
+- It should be possible to add new clinicians - this has been implemented
+
+DECISIONS:
+- When the parents are in a restroom, this indicates that the mother has not given birth yet
+- When the appointment is then removed at then added as new appoint in birthroom this means that the birth is ongoing
+- When the appointment then is removed again and added as a new appointment to maternityroom, this is marked as the birth is finished and it is 
+possible to add the infomation of the child
+
+ENTITY DECISIONS:
+ - Find all associations between the domain objects in the attached diagram "BirthClinic-Diagram.jpg".
+ - Every entity has an ID which is used as primary keys. The ID's makes a good sense in the application context, instead of creating composite keys. 
+ - Clinicians can hold a collection of appointments.
+ - Parents can hold only 1 child (the newborn). 
+ - The three types of different rooms inherits from a Room base class which holds the basic information that is common for all kind of rooms. 
+ - The Rooms can hold a collection of appointments. 
+ - The Rooms has a Room number besides the unique Room ID to define what number of room it is of its type. 
+ - Appointments holds 1 room, 1 pair of Parents, 1 child and a collection of clinicians as several clinicians can participate in an appointment.
+ - Mother and father is placed in 1 entity as Parents. 
+
+DATAACCESS DECISIONS:
+- In order to access the database the Repository pattern is used. 
+- For each relevant entity there is a repository made with specified methods to be used when performing the CRUD operations. 
+- Only a single unitOfWork is used as the service layer which is in charge of running the busines logic and calling SaveChanges().
+- The unit of work is being used in the WPF application. 
+- All seeding is made in the DBcontext file. 
