@@ -11,7 +11,7 @@ namespace BirthClinicPlanningDB.DomainObjects
 {
     public class Appointment
     {
-        [Key] 
+        [Key]
         public int AppointmentID { get; set; }
 
         [ForeignKey("RoomID")]
