@@ -21,7 +21,10 @@ namespace EmilMongoRepoTestudvikling.Repositories
             _dbCollection.Find(appointment => appointment.AppointmentID.ToIndentedJson() == id).FirstOrDefault();
 
         public List<Appointment> getAllAppointments() =>
-            _dbCollection.Find(app => true).ToList();
+            _dbCollection.Find(Appointment => true).ToList(); //Exception med ID kommer her. 
+
+        public void Update(string id, Appointment bookIn) =>
+            _dbCollection.ReplaceOne(app => app.AppointmentID == id, bookIn);
 
 
         public MongoDbContext context

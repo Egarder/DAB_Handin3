@@ -12,5 +12,7 @@ namespace EmilMongoRepoTestudvikling.Repositories.Interfaces
         public Appointment getSingleAppointments(string id);
 
         public List<Appointment> getAllAppointments();
+
+        public void Update(string id, Appointment bookIn);
     }
 }
