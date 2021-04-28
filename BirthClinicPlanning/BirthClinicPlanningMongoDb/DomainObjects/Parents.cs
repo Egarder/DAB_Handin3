@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BirthClinicPlanningDB.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace BirthClinicPlanningDB.DomainObjects
 {
+    [BsonCollection("Parents")]
     public class Parents
     {
         [Key]

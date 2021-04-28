@@ -1,9 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using BirthClinicPlanningDB.Repositories;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BirthClinicPlanningDB.DomainObjects
 {
+    [BsonCollection("Room")]
     public class Room
     {
         public int RoomID { get; set; }
