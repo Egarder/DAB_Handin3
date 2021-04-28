@@ -20,6 +20,7 @@ namespace EmilMongoRepoTestudvikling.Repositories
             var temp = context.GetCollection<Appointment>(collectionname);
 
             return temp;
+
         }
 
         public MongoDbContext context

@@ -12,10 +12,10 @@ namespace EmilMongoRepoTestudvikling
         private IMongoDatabase _db { get; set; }
         private MongoClient _mongoClient { get; set; }
         public IClientSessionHandle Session { get; set; }
-        public MongoDbContext(IOptions<MongoDbSettings> configuration)
+        public MongoDbContext(string connectionstring, string databasename)
         {
-            _mongoClient = new MongoClient(configuration.Value.ConnectionString);
-            _db = _mongoClient.GetDatabase(configuration.Value.DatabaseName);
+            _mongoClient = new MongoClient(connectionstring);
+            _db = _mongoClient.GetDatabase(databasename);
         }
         public IMongoCollection<T> GetCollection<T>(string name)
         {
