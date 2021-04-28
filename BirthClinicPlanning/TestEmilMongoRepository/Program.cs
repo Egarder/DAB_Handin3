@@ -6,6 +6,7 @@ using EmilMongoRepoTestudvikling.Domainmodels;
 using EmilMongoRepoTestudvikling.Repositories;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
+using MongoDB.Bson.IO;
 using MongoDB.Driver;
 
 namespace TestEmilMongoRepository
@@ -17,19 +18,28 @@ namespace TestEmilMongoRepository
             IMongoDbSettings settings = new MongoDbSettings();
             settings.ConnectionString = "mongodb://localhost:27017";
             settings.DatabaseName = "BirthClinicPlanning";
+            var context = new MongoDbContext(settings.ConnectionString, settings.DatabaseName);
 
-            IDataAccessActions access = new DataAccessActions(new MongoDbContext(settings.ConnectionString, settings.DatabaseName));
+            IDataAccessActions access = new DataAccessActions(context);
 
-            //var test = access.Appointments.getSingleAppointments("1");
-            //Console.WriteLine($"{test.AppointmentID}");
+            var databaser = context.listDatabases();
 
-
-            var test2 = access.Appointments.getAllAppointments();
-
-            foreach (var item in test2)
+            foreach (var item in databaser)
             {
-                Console.WriteLine($"{item.AppointmentID}");
+                Console.WriteLine($"{item}");
             }
+            
+
+            //var test = access.Appointments.getSingleAppointments("6089acf4895344269ca820ec");
+            //Console.WriteLine($"{test.ToJson()}");
+
+
+            //var test2 = access.Appointments.getAllAppointments();
+
+            //foreach (var item in test2)
+            //{
+            //    Console.WriteLine($"{item.AppointmentID}");
+            //}
 
         }
 

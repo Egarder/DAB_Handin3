@@ -9,5 +9,7 @@ namespace EmilMongoRepoTestudvikling
     public interface IMongoDbContext
     {
         IMongoCollection<Appointment> GetCollection<Appointment>(string name);
+
+        public List<string> listDatabases();
     }
 }

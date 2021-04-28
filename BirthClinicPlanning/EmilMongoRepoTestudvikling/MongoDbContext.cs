@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace EmilMongoRepoTestudvikling
@@ -20,6 +21,20 @@ namespace EmilMongoRepoTestudvikling
         public IMongoCollection<T> GetCollection<T>(string name)
         {
             return _db.GetCollection<T>(name);
+        }
+
+        public List<string> listDatabases()
+        {
+            var dblist = _mongoClient.ListDatabases().ToList();
+
+            List<string> stringretur = new List<string>();
+
+            foreach (var VARIABLE in dblist)
+            {
+                stringretur.Add(VARIABLE.ToJson());
+            }
+
+            return stringretur;
         }
     }
 }

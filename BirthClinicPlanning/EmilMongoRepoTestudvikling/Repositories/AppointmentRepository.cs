@@ -17,20 +17,12 @@ namespace EmilMongoRepoTestudvikling.Repositories
         {
         }
 
-
-        //public string getSingleAppointments(string appointmentID)
-        //{
-        //    var temp = context.GetCollection<Appointment>("Appointment")
-        //        .FindSync(appointmentID);
-
-        //    return temp.ToString();
-        //}
-
         public Appointment getSingleAppointments(string id) =>
-            _dbCollection.Find(appointment => appointment.AppointmentID == id).FirstOrDefault();
+            _dbCollection.Find(appointment => appointment.AppointmentID.ToIndentedJson() == id).FirstOrDefault();
 
         public List<Appointment> getAllAppointments() =>
             _dbCollection.Find(app => true).ToList();
+
 
         public MongoDbContext context
         {
