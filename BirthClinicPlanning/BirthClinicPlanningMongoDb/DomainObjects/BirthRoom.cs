@@ -12,7 +12,6 @@ namespace BirthClinicPlanningMongoDbWebAPI.DomainObjects
             base.RoomType = "Birth Room";
         }
 
-        public ObjectId Id { get; set; }
-        public DateTime CreatedAt { get; }
+       
     }
 }
