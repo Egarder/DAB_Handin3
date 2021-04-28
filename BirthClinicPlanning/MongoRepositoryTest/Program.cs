@@ -20,7 +20,9 @@ namespace MongoRepositoryTest
 
             AppointmentController controller = new AppointmentController(repo);
 
+            var appointmenttest = controller.getSingleAppointment(1);
 
+            Console.WriteLine($"{appointmenttest.StartTime}");
         }
     }
 }

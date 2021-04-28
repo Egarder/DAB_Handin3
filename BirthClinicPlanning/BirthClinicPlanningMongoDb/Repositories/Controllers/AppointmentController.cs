@@ -1,7 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using BirthClinicPlanningMongoDbWebAPI.DomainObjects;
 using BirthClinicPlanningMongoDbWebAPI.Repositories.RepositoryInterfaces;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 
 namespace BirthClinicPlanningMongoDbWebAPI.Repositories.Controllers
 {
@@ -23,9 +27,15 @@ namespace BirthClinicPlanningMongoDbWebAPI.Repositories.Controllers
         }
 
         [HttpGet("getSingleAppointment")]
-        public Appointment getSingleAppointment(int id)
+        public Appointment getSingleAppointment(string id)
         {
-            return _appointmentRepository.FindById(id.ToString());
+            return _appointmentRepository.FindById(id);
+        }
+
+        [HttpGet("getAllAppointment")]
+        public ObservableCollection<Appointment> getAllAppointment()
+        {
+            return null;
         }
 
         [HttpPost("DelAppointment")]
