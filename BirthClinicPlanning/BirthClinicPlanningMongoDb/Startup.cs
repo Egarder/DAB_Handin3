@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BirthClinicPlanningMongoDb.Repositories;
+using BirthClinicPlanningMongoDb.Repositories.Interfaces;
 using Microsoft.Extensions.Options;
 
 namespace BirthClinicPlanningMongoDb
@@ -31,6 +33,8 @@ namespace BirthClinicPlanningMongoDb
 
             services.AddSingleton<IMongoDbSettings>(serviceProvider =>
                 serviceProvider.GetRequiredService<IOptions<MongoDbSettings>>().Value);
+
+            services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
 
             services.AddControllers();
 
