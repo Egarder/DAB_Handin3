@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BirthClinicPlanningMongoDbWebAPI.DomainObjects;
+using BirthClinicPlanningMongoDbWebAPI.Repositories.RepositoryInterfaces;
+using Microsoft.AspNetCore.Mvc;
 
-namespace BirthClinicPlanningMongoDb.Controllers
+namespace BirthClinicPlanningMongoDbWebAPI.Controllers
 {
     [ApiController]
-
+    [Route("[controller")]
     public class AppointmentController: ControllerBase
     {
-
+        private readonly IMongoRepository<Appointment> _appointmentRepository;
     }
 }

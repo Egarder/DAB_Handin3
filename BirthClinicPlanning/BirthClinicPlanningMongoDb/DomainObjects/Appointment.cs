@@ -1,17 +1,13 @@
-﻿using BirthClinicPlanningDB.Repositories;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BirthClinicPlanningMongoDbWebAPI.Repositories;
 
-namespace BirthClinicPlanningDB.DomainObjects
+namespace BirthClinicPlanningMongoDbWebAPI.DomainObjects
 {
     [BsonCollection("Appointment")]
-    public class Appointment
+    public class Appointment: Document
     {
         [Key]
         public int AppointmentID { get; set; }

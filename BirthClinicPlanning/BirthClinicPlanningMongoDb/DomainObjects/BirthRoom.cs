@@ -1,9 +1,8 @@
-﻿using BirthClinicPlanningDB.Repositories;
-using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using BirthClinicPlanningMongoDbWebAPI.Repositories;
+using MongoDB.Bson;
 
-namespace BirthClinicPlanningDB.DomainObjects
+namespace BirthClinicPlanningMongoDbWebAPI.DomainObjects
 {
     [BsonCollection("BirthRoom")]
     public class BirthRoom : Room
@@ -12,5 +11,8 @@ namespace BirthClinicPlanningDB.DomainObjects
         {
             base.RoomType = "Birth Room";
         }
+
+        public ObjectId Id { get; set; }
+        public DateTime CreatedAt { get; }
     }
 }

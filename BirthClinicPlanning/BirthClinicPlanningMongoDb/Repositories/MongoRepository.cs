@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using BirthClinicPlanningDB.Repositories;
-using BirthClinicPlanningDB.Repositories.RepositoryInterfaces;
+using BirthClinicPlanningMongoDbWebAPI.Repositories.RepositoryInterfaces;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace BirthClinicPlanningMongoDb.Repositories
+namespace BirthClinicPlanningMongoDbWebAPI.Repositories
 {
     public class MongoRepository<TDocument> where TDocument : IDocument
     {

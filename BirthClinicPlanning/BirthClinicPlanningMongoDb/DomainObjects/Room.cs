@@ -1,12 +1,10 @@
-﻿using BirthClinicPlanningDB.Repositories;
-using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.ObjectModel;
+using BirthClinicPlanningMongoDbWebAPI.Repositories;
 
-namespace BirthClinicPlanningDB.DomainObjects
+namespace BirthClinicPlanningMongoDbWebAPI.DomainObjects
 {
     [BsonCollection("Room")]
-    public class Room
+    public class Room: Document
     {
         public int RoomID { get; set; }
 

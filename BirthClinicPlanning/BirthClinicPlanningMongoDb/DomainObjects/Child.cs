@@ -1,17 +1,11 @@
-﻿using BirthClinicPlanningDB.Repositories;
-using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BirthClinicPlanningMongoDbWebAPI.Repositories;
 
-namespace BirthClinicPlanningDB.DomainObjects
+namespace BirthClinicPlanningMongoDbWebAPI.DomainObjects
 {
     [BsonCollection("Child")]
-    public class Child
+    public class Child: Document
     {
         [Key]
         public int ChildID { get; set; }

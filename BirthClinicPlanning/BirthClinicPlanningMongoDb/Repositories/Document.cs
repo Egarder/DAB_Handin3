@@ -1,12 +1,8 @@
-﻿using BirthClinicPlanningDB.Repositories.RepositoryInterfaces;
+﻿using System;
+using BirthClinicPlanningMongoDbWebAPI.Repositories.RepositoryInterfaces;
 using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BirthClinicPlanningDB.Repositories
+namespace BirthClinicPlanningMongoDbWebAPI.Repositories
 {
     public abstract class Document : IDocument
     {
