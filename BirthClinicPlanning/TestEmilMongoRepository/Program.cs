@@ -28,7 +28,6 @@ namespace TestEmilMongoRepository
             {
                 Console.WriteLine($"{item}");
             }
-            
 
             //var test = access.Appointments.getSingleAppointments("6089acf4895344269ca820ec");
             //Console.WriteLine($"{test.ToJson()}");
