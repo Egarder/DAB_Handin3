@@ -37,7 +37,7 @@ namespace TestEmilMongoRepository
             foreach (var item in list)
             {
                 access.Appointments.Update(item.AppointmentID, item);
-                System.Console.WriteLine(item);
+                Console.WriteLine(item);
             }
 
             //var test = access.Appointments.getSingleAppointments("6089acf4895344269ca820ec");
