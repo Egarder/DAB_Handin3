@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BirthClinicPlanningDB.Repositories
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
-    class BsonCollectionAttribute : Attribute
+    public class BsonCollectionAttribute : Attribute
     {
         public string CollectionName { get; }
 
