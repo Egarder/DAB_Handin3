@@ -9,7 +9,7 @@ using MongoDB.Driver;
 
 namespace BirthClinicPlanningMongoDbWebAPI.Repositories
 {
-    public class MongoRepository<TDocument> where TDocument : IDocument
+    public class MongoRepository<TDocument> : IMongoRepository<TDocument> where TDocument : IDocument
     {
         private readonly IMongoCollection<TDocument> _collection;
 
