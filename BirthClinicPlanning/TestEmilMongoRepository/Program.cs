@@ -22,6 +22,7 @@ namespace TestEmilMongoRepository
 
             IDataAccessActions access = new DataAccessActions(context);
 
+            //==== DB context test = Works!
             var databaser = context.listDatabases();
 
             foreach (var item in databaser)
@@ -30,6 +31,7 @@ namespace TestEmilMongoRepository
             }
 
 
+            //===== Test af Appointment Repository = Almost works....
             var list = access.Appointments.getAllAppointments();
 
             foreach (var item in list)
