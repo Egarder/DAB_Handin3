@@ -1,1 +1,3 @@
 ﻿Forsøg med denne: https://www.thecodebuzz.com/mongodb-repository-implementation-unit-testing-net-core-example/#schema
+
+Her kan tages noget fra: https://developer.mongodb.com/quickstart/csharp-crud-tutorial/
