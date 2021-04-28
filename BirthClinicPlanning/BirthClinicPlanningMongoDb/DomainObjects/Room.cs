@@ -1,12 +1,16 @@
 ﻿using System.Collections.ObjectModel;
 using BirthClinicPlanningMongoDbWebAPI.Repositories;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace BirthClinicPlanningMongoDbWebAPI.DomainObjects
 {
     [BsonCollection("Room")]
     public class Room: Document
     {
-        public int RoomID { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string RoomID { get; set; }
 
         public int RoomNumber { get; set; }
 

@@ -10,7 +10,7 @@ namespace EmilMongoRepoTestudvikling.Domainmodels
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public int ClinicianID { get; set; }
+        public string ClinicianID { get; set; }
 
         public string FirstName { get; set; }
 

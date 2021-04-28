@@ -10,6 +10,7 @@ namespace EmilMongoRepoTestudvikling.Repositories.Interfaces
         Task Create(TEntity obj);
         void Update(TEntity obj);
         void Delete(string id);
+        void DeleteById(string id);
         Task<TEntity> Get(string id);
         Task<IEnumerable<TEntity>> Get();
     }

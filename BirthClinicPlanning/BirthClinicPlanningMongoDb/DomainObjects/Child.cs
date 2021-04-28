@@ -1,14 +1,17 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using BirthClinicPlanningMongoDbWebAPI.Repositories;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace BirthClinicPlanningMongoDbWebAPI.DomainObjects
 {
     [BsonCollection("Child")]
     public class Child: Document
     {
-        [Key]
-        public int ChildID { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string ChildID { get; set; }
 
         public string FirstName { get; set; }
 

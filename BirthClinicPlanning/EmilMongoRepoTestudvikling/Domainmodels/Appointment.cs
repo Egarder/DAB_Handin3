@@ -12,7 +12,7 @@ namespace EmilMongoRepoTestudvikling.Domainmodels
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public int AppointmentID { get; set; }
+        public string AppointmentID { get; set; }
 
         [BsonElement("RoomID")]
         [JsonProperty("RoomID")]

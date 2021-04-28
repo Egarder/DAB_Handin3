@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 using EmilMongoRepoTestudvikling;
 using EmilMongoRepoTestudvikling.Domainmodels;
+using EmilMongoRepoTestudvikling.Repositories;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace TestEmilMongoRepository
@@ -16,13 +20,18 @@ namespace TestEmilMongoRepository
 
             IDataAccessActions access = new DataAccessActions(new MongoDbContext(settings.ConnectionString, settings.DatabaseName));
 
-            IMongoCollection<Appointment> test = access.Appointments.getAllAppointment("Appointment");
+            //var test = access.Appointments.getSingleAppointments("1");
+            //Console.WriteLine($"{test.AppointmentID}");
 
-            
-            foreach (var item in test)
+
+            var test2 = access.Appointments.getAllAppointments();
+
+            foreach (var item in test2)
             {
-                
+                Console.WriteLine($"{item.AppointmentID}");
             }
+
         }
+
     }
 }

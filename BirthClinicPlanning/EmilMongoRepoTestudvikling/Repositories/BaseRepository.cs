@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EmilMongoRepoTestudvikling.Repositories.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using NetFusion.Common.Extensions;
 
 namespace EmilMongoRepoTestudvikling.Repositories
 {
@@ -42,6 +43,13 @@ namespace EmilMongoRepoTestudvikling.Repositories
             var objectId = new ObjectId(id);
             _dbCollection.DeleteOneAsync(Builders<TEntity>.Filter.Eq("_id", objectId));
 
+        }
+
+        public void DeleteById(string id)
+        {
+            var objectId = new ObjectId(id);
+            var filter = Builders<TEntity>.Filter.Eq("_id", objectId);
+            _dbCollection.FindOneAndDelete(filter);
         }
 
         public async Task<TEntity> Get(string id)

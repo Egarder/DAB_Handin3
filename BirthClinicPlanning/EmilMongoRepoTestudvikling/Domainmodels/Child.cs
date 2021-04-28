@@ -9,7 +9,7 @@ namespace EmilMongoRepoTestudvikling.Domainmodels
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public int ChildID { get; set; }
+        public string ChildID { get; set; }
 
         public string FirstName { get; set; }
 
