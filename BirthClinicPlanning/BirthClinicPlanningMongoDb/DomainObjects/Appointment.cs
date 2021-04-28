@@ -3,30 +3,45 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using BirthClinicPlanningMongoDbWebAPI.Repositories;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
 
 namespace BirthClinicPlanningMongoDbWebAPI.DomainObjects
 {
     [BsonCollection("Appointment")]
     public class Appointment: Document
     {
-        [Key]
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
         public int AppointmentID { get; set; }
 
-        [ForeignKey("RoomID")]
+        [BsonElement("RoomID")]
+        [JsonProperty("RoomID")]
         public int RoomID { get; set; }
 
+        [BsonElement("Room")]
+        [JsonProperty("Room")]
         public Room Room { get; set; }
 
-        [ForeignKey("ParentsID")]
+        [BsonElement("Parents")]
+        [JsonProperty("Parents")]
         public Parents Parents { get; set; }
 
-        [ForeignKey("ChildID")]
+        [BsonElement("Child")]
+        [JsonProperty("Child")]
         public Child Child { get; set; }
 
+        [BsonElement("Clinicians")]
+        [JsonProperty("Clinicians")]
         public ObservableCollection<Clinician> Clinicians { get; set; }
 
+        [BsonElement("StartTime")]
+        [JsonProperty("StartTime")]
         public DateTime StartTime { get; set; }
 
+        [BsonElement("EndTime")]
+        [JsonProperty("EndTime")]
         public DateTime EndTime { get; set; }
 
         [NotMapped]

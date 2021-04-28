@@ -30,7 +30,7 @@ namespace BirthClinicPlanningMongoDbWebAPI
 
             services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(o=>o.UseMemberCasing());
 
             services.AddSwaggerGen(c =>
             {
