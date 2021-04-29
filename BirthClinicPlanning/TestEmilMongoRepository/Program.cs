@@ -22,23 +22,35 @@ namespace TestEmilMongoRepository
 
             IDataAccessActions access = new DataAccessActions(context);
 
-            //==== DB context test = Works!
-            var databaser = context.listDatabases();
+            ////==== DB context test = Works!
+            //var databaser = context.listDatabases();
 
-            foreach (var item in databaser)
+            //foreach (var item in databaser)
+            //{
+            //    Console.WriteLine($"{item}");
+            //}
+
+
+            ////===== Test af Appointment Repository Update = Almost works....
+            //var list = access.Appointments.getAllAppointments();
+
+            //foreach (var item in list)
+            //{
+            //    access.Appointments.Update(item.AppointmentID, item);
+            //    Console.WriteLine(item);
+            //}
+
+            //==== Test af Appointment Repo create = 
+
+            Appointment newapp = new Appointment()
             {
-                Console.WriteLine($"{item}");
-            }
+                AppointmentID = "4",
+                Parents = new Parents() {DadCPR = "2003922955", DadFirstName = "Thom",DadLastName = "Poulsen",MomCPR = "2003922955", MomFirstName = "Karin",MomLastName = "poulsen"},
+                StartTime = Convert.ToDateTime("29-04-2021"),
+                EndTime = Convert.ToDateTime("30-04-2021")
+            };
 
-
-            //===== Test af Appointment Repository = Almost works....
-            var list = access.Appointments.getAllAppointments();
-
-            foreach (var item in list)
-            {
-                access.Appointments.Update(item.AppointmentID, item);
-                Console.WriteLine(item);
-            }
+            access.Appointments.AddAppointment(newapp);
 
             //var test = access.Appointments.getSingleAppointments("6089acf4895344269ca820ec");
             //Console.WriteLine($"{test.ToJson()}");
