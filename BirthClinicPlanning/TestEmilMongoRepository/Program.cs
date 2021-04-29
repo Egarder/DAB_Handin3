@@ -4,7 +4,9 @@ using System.Threading.Tasks;
 using EmilMongoRepoTestudvikling;
 using EmilMongoRepoTestudvikling.Domainmodels;
 using EmilMongoRepoTestudvikling.Repositories;
+using Json.Net;
 using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Extensions;
 using MongoDB.Bson;
 using MongoDB.Bson.IO;
 using MongoDB.Driver;
@@ -31,14 +33,21 @@ namespace TestEmilMongoRepository
             //}
 
 
-            ////===== Test af Appointment Repository Update = Almost works....=====================
-            var list = access.Appointments.getAllAppointments();
+            ////===== Test af Appointment Repository getallappointments og update = Almost works....=====================
 
-            foreach (var item in list)
-            {
-                access.Appointments.Update(item.AppointmentID, item);
-                Console.WriteLine(item);
-            }
+            //var list = access.Appointments.getAllAppointments();
+            //foreach (var item in list)
+            //{
+            //access.Appointments.Update(item.AppointmentID, item);
+            //Console.WriteLine(item.AppointmentID);
+            //}
+
+            ////===== Test af Appointment Repository getsingleappointment = Almost works....=====================
+
+            var tester = access.Appointments.getSingleAppointment("3");
+
+            Console.WriteLine(tester.RoomID);
+            
 
             //==== Test af Appointment Repo create = Works!========================================
             //Appointment newapp = new Appointment()
