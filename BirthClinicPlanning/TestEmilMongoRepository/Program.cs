@@ -22,7 +22,7 @@ namespace TestEmilMongoRepository
 
             IDataAccessActions access = new DataAccessActions(context);
 
-            ////==== DB context test = Works!
+            ////==== DB context test = Works! ====================================================
             //var databaser = context.listDatabases();
 
             //foreach (var item in databaser)
@@ -31,26 +31,24 @@ namespace TestEmilMongoRepository
             //}
 
 
-            ////===== Test af Appointment Repository Update = Almost works....
-            //var list = access.Appointments.getAllAppointments();
+            ////===== Test af Appointment Repository Update = Almost works....=====================
+            var list = access.Appointments.getAllAppointments();
 
-            //foreach (var item in list)
-            //{
-            //    access.Appointments.Update(item.AppointmentID, item);
-            //    Console.WriteLine(item);
-            //}
-
-            //==== Test af Appointment Repo create = 
-
-            Appointment newapp = new Appointment()
+            foreach (var item in list)
             {
-                AppointmentID = "4",
-                Parents = new Parents() {DadCPR = "2003922955", DadFirstName = "Thom",DadLastName = "Poulsen",MomCPR = "2003922955", MomFirstName = "Karin",MomLastName = "poulsen"},
-                StartTime = Convert.ToDateTime("29-04-2021"),
-                EndTime = Convert.ToDateTime("30-04-2021")
-            };
+                access.Appointments.Update(item.AppointmentID, item);
+                Console.WriteLine(item);
+            }
 
-            access.Appointments.AddAppointment(newapp);
+            //==== Test af Appointment Repo create = Works!========================================
+            //Appointment newapp = new Appointment()
+            //{
+            //    AppointmentID = "4",
+            //    Parents = new Parents() {DadCPR = "2003922955", DadFirstName = "Thom",DadLastName = "Poulsen",MomCPR = "2003922955", MomFirstName = "Karin",MomLastName = "poulsen"},
+            //    StartTime = Convert.ToDateTime("29-04-2021"),
+            //    EndTime = Convert.ToDateTime("30-04-2021")
+            //};
+            //access.Appointments.AddAppointment(newapp);
 
             //var test = access.Appointments.getSingleAppointments("6089acf4895344269ca820ec");
             //Console.WriteLine($"{test.ToJson()}");
