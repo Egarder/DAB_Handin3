@@ -47,7 +47,15 @@ namespace TestEmilMongoRepository
             var tester = access.Appointments.getSingleAppointment("3");
 
             Console.WriteLine(tester.RoomID);
-            
+
+            //=======Test af getAllAppointmentsmetoder====
+
+            //var tester2 = access.Appointments.getAllAppointments2();
+
+            //foreach (var item in tester2)
+            //{
+            //    Console.WriteLine($"{item.AppointmentID}");
+            //}
 
             //==== Test af Appointment Repo create = Works!========================================
             //Appointment newapp = new Appointment()

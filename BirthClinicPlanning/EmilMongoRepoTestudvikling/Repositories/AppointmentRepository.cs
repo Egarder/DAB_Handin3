@@ -18,20 +18,6 @@ namespace EmilMongoRepoTestudvikling.Repositories
         {
         }
 
-        public List<string> getSingleAppointments(string id)
-        {
-            var projection = Builders<Appointment>.Projection.Include(b => b.AppointmentID);
-
-            var bson = _dbCollection.Find<Appointment>(app => app.AppointmentID == id).Project(projection)
-                .FirstOrDefault();
-
-            List<string> objectdata = new List<string>();
-
-            objectdata.Add(bson.GetElement("AppointmentID").Value.AsString);
-
-            return objectdata;
-        }
-
         public Appointment getSingleAppointment(string id)
         {
             var projection = Builders<Appointment>.Projection.Include(b => b.AppointmentID).Include(c=>c.RoomID);
@@ -46,6 +32,14 @@ namespace EmilMongoRepoTestudvikling.Repositories
             };
 
             return tempobj;
+        }
+
+        public List<Appointment> getAllAppointments2()
+        {
+            var temp = _dbCollection.Find(new BsonDocument()).ToList();
+
+
+            return temp;
         }
 
         public List<Appointment> getAllAppointments() =>
