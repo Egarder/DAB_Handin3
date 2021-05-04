@@ -42,9 +42,9 @@ namespace TestEmilMongoRepository
             //Console.WriteLine(item.AppointmentID);
             //}
 
-            ////===== Test af Appointment Repository getsingleappointment = Almost works....=====================
+            ////===== Test af Appointment Repository getsingleappointment = Works!....=====================
 
-            var tester = access.Appointments.getSingleAppointment("3");
+            var tester = access.Appointments.getSingleAppointment("4");
 
             Console.WriteLine(tester.RoomID);
 
