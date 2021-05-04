@@ -20,7 +20,9 @@ namespace EmilMongoRepoTestudvikling.Repositories
 
         public Appointment getSingleAppointment(string id)
         {
-            var projection = Builders<Appointment>.Projection.Include(b => b.AppointmentID).Include(c=>c.RoomID);
+            var projection = Builders<Appointment>.Projection.Include(b => b.AppointmentID).Include(c=>c.RoomID)
+                .Include(d=>d.StartTime).Include(e=>e.EndTime)
+                .Include(f=>f.Room); //Add other properties
 
             var bson = _dbCollection.Find<Appointment>(app => app.AppointmentID == id).Project(projection)
                 .FirstOrDefault();
@@ -28,7 +30,10 @@ namespace EmilMongoRepoTestudvikling.Repositories
             var tempobj = new Appointment()
             {
                 AppointmentID = bson.GetElement("AppointmentID").Value.AsString,
-                RoomID = bson.GetElement("RoomID").Value.AsInt32
+                RoomID = bson.GetElement("RoomID").Value.AsInt32,
+                StartTime = (DateTime) bson.GetElement("StartTime").Value,
+                EndTime = (DateTime) bson.GetElement("EndTime").Value,
+                Room = new Room() {RoomNumber = bson.GetElement("Room: {RoomNumber}").Value.AsInt32 }
             };
 
             return tempobj;
