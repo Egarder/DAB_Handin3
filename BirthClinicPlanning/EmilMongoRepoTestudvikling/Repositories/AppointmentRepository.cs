@@ -42,9 +42,7 @@ namespace EmilMongoRepoTestudvikling.Repositories
 
         public ObservableCollection<Appointment> getAllAppointments()
         {
-            var temp = _dbCollection.Find(new BsonDocument()).ToList();
-
-            return temp as ObservableCollection<Appointment>;
+            return new ObservableCollection<Appointment>(_dbCollection.Find(new BsonDocument()).ToList());
         }
 
         public void Update(string id, Appointment appIn) =>
