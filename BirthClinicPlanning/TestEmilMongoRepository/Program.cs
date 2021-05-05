@@ -31,7 +31,7 @@ namespace TestEmilMongoRepository
 
             var roomToInsert = new BirthRoom()
             {
-                AppointmentIds = new List<int> { 1 },
+                Appointments = new ObservableCollection<Appointment>(),
                 RoomNumber = 2,
                 RoomType = "BirthRoom"
             };

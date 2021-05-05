@@ -52,15 +52,16 @@ namespace BirthClinicGUI.ViewModels
         {
             _dialog = dialog;
 
-            SetUpRoomsAppointmentsListInDb(); //Setting up relation between seeded rooms and appointments
-
             IMongoDbSettings settings = new MongoDbSettings();
             settings.ConnectionString = "mongodb://localhost:27017";
             settings.DatabaseName = "BirthClinicPlanning";
             var context = new MongoDbContext(settings.ConnectionString, settings.DatabaseName);
-
             access = new DataAccessActions(context);
 
+            context.Seed(access);
+
+            SetUpRoomsAppointmentsListInDb(); //Setting up relation between seeded rooms and appointments
+            
             Appointments = access.Appointments.GetAllAppointments();
             
             AppointmentIndex = 0;

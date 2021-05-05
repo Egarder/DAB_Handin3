@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmilMongoRepoTestudvikling"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestEmilMongoRepository", "TestEmilMongoRepository\TestEmilMongoRepository.csproj", "{5E6AF088-C05E-4D0B-B8B1-8D0EE0B7F004}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirthClinicMongoDB", "BirthClinicMongoDB\BirthClinicMongoDB.csproj", "{663B415D-81D5-4E4A-B04A-99A9FE79F609}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{5E6AF088-C05E-4D0B-B8B1-8D0EE0B7F004}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E6AF088-C05E-4D0B-B8B1-8D0EE0B7F004}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E6AF088-C05E-4D0B-B8B1-8D0EE0B7F004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{663B415D-81D5-4E4A-B04A-99A9FE79F609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{663B415D-81D5-4E4A-B04A-99A9FE79F609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{663B415D-81D5-4E4A-B04A-99A9FE79F609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{663B415D-81D5-4E4A-B04A-99A9FE79F609}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
