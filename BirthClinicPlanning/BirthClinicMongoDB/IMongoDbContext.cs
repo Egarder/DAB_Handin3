@@ -1,10 +1,7 @@
-﻿using System;
+﻿using MongoDB.Driver;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MongoDB.Driver;
 
-namespace EmilMongoRepoTestudvikling
+namespace BirthClinicMongoDB
 {
     public interface IMongoDbContext
     {

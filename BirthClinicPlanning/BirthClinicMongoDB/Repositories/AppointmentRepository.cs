@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MongoDB.Driver;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using EmilMongoRepoTestudvikling.Domainmodels;
-using EmilMongoRepoTestudvikling.Repositories.Interfaces;
-using MongoDB.Bson;
-using MongoDB.Driver;
-using NetFusion.Common.Extensions;
+using BirthClinicMongoDB.Domainmodels;
+using BirthClinicMongoDB.Repositories.Interfaces;
 
-namespace EmilMongoRepoTestudvikling.Repositories
+namespace BirthClinicMongoDB.Repositories
 {
     public class AppointmentRepository: BaseRepository<Appointment>, IAppointmentRepository
     {

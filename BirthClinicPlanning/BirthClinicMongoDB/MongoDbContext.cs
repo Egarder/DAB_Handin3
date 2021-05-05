@@ -1,15 +1,11 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
-using EmilMongoRepoTestudvikling.Domainmodels;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using MongoDB.Bson;
-using MongoDB.Driver;
 
-namespace EmilMongoRepoTestudvikling
+namespace BirthClinicMongoDB
 {
     public class MongoDbContext : IMongoDbContext
     {

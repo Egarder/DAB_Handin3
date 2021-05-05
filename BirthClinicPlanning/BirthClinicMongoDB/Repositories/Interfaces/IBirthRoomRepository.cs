@@ -1,16 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EmilMongoRepoTestudvikling.Domainmodels;
-using EmilMongoRepoTestudvikling.Repositories;
-using EmilMongoRepoTestudvikling.Repositories.Interfaces;
-using Polly;
+﻿using System.Collections.ObjectModel;
+using BirthClinicMongoDB.Domainmodels;
 
-namespace EmilMongoRepoTestudvikling.Repositories.Interfaces
+namespace BirthClinicMongoDB.Repositories.Interfaces
 {
     public interface IBirthRoomRepository : IBaseRepository<BirthRoom>
     {
