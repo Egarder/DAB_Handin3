@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EmilMongoRepoTestudvikling.Domainmodels;
-using EmilMongoRepoTestudvikling.Repositories;
+﻿using EmilMongoRepoTestudvikling.Domainmodels;
 using EmilMongoRepoTestudvikling.Repositories.Interfaces;
 using MongoDB.Bson;
-using MongoDB.Bson.IO;
-using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
-using Polly;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace EmilMongoRepoTestudvikling.Repositories
 {
