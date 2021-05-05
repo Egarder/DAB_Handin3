@@ -8,8 +8,8 @@ namespace EmilMongoRepoTestudvikling.Domainmodels
 {
     public class Clinician
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
+        //[BsonId]
+        //[BsonRepresentation(BsonType.ObjectId)]
         public string ClinicianID { get; set; }
 
         public string FirstName { get; set; }
