@@ -16,6 +16,7 @@ namespace EmilMongoRepoTestudvikling.Repositories
     {
         public AppointmentRepository(IMongoDbContext context) : base(context)
         {
+
         }
 
         public Appointment getSingleAppointment(string id)
@@ -24,8 +25,8 @@ namespace EmilMongoRepoTestudvikling.Repositories
                 .Include(b => b.AppointmentID)
                 .Include(c=>c.RoomID)
                 .Include(d=>d.StartTime)
-                .Include(e=>e.EndTime)
-                .Include(f=>f.Room); //Add other properties
+                .Include(e=>e.EndTime);
+                //.Include(f=>f.Room); //Add other properties
 
             var bson = _dbCollection.Find<Appointment>(app => app.AppointmentID == id).Project(projection)
                 .FirstOrDefault();
@@ -64,7 +65,7 @@ namespace EmilMongoRepoTestudvikling.Repositories
                     RoomID = item.GetElement("RoomID").Value.AsInt32,
                     StartTime = (DateTime)item.GetElement("StartTime").Value,
                     EndTime = (DateTime)item.GetElement("EndTime").Value,
-                    Room = item.GetElement("Room").
+                    //Room = item.GetElement("Room").
                 };
 
                 tempobjcollection.Add(tempobj);

@@ -68,9 +68,9 @@ namespace TestEmilMongoRepository
 
             ////===== Test af Appointment Repository getsingleappointment = Works!   But needs more methods....=====================
 
-            //var tester = access.Appointments.getSingleAppointment("5");
+            var tester = access.Appointments.getSingleAppointment("4");
 
-            //Console.WriteLine(tester.StartTime);
+            Console.WriteLine(tester.StartTime);
 
 
             //==== Test af Appointment Repo create = Works!========================================
@@ -101,9 +101,6 @@ namespace TestEmilMongoRepository
 
             //access.Appointments.DelAppointment(tester);
 
-            Clinician test = new Clinician() {FirstName = "Arnje", LastName = "Bjarne"};
-
-            access.Clinicians.AddClinician(test);
         }
 
     }
