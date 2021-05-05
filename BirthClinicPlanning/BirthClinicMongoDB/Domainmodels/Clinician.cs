@@ -9,8 +9,10 @@ namespace BirthClinicMongoDB.Domainmodels
 {
     public class Clinician
     {
-        //[BsonId]
-        //[BsonRepresentation(BsonType.ObjectId)]
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string ClinicianBsonId { get; set; }
+
         [BsonElement("ClinicianID")]
         [JsonProperty("ClinicianID")]
         public string ClinicianID { get; set; }

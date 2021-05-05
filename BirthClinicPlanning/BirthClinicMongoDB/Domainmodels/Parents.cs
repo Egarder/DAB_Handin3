@@ -8,8 +8,10 @@ namespace BirthClinicMongoDB.Domainmodels
 {
     public class Parents
     {
-        //[BsonId]
-        //[BsonRepresentation(BsonType.ObjectId)]
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string ParentsBsonId { get; set; }
+
         [BsonElement("ParentsID")]
         [JsonProperty("ParentsID")]
         public string ParentsID { get; set; }

@@ -10,8 +10,9 @@ namespace BirthClinicMongoDB.Domainmodels
 {
     public class Appointment
     {
-        //[BsonId]
-        //[BsonRepresentation(BsonType.ObjectId)]
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string AppointmentBsonId { get; set; }
 
         [BsonElement("AppointmentID")]
         [JsonProperty("AppointmentID")]
