@@ -6,8 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using BirthClinicPlanningDB;
-using BirthClinicPlanningDB.DomainObjects;
+using EmilMongoRepoTestudvikling;
+using EmilMongoRepoTestudvikling.Domainmodels;
+using Polly;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
@@ -16,11 +17,18 @@ namespace BirthClinicGUI.ViewModels
 {
     public class StatusRoomsViewModel : BindableBase, IDialogAware
     {
-        private IDataAccessActions access = new DataAccessActions(new Context());
+        private IDataAccessActions access;
         private IDialogService _dialog;
 
         public StatusRoomsViewModel(IDialogService dialog)
         {
+            IMongoDbSettings settings = new MongoDbSettings();
+            settings.ConnectionString = "mongodb://localhost:27017";
+            settings.DatabaseName = "BirthClinicPlanning";
+            var context = new MongoDbContext(settings.ConnectionString, settings.DatabaseName);
+
+            access = new DataAccessActions(context);
+
             _dialog = dialog;
         }
 

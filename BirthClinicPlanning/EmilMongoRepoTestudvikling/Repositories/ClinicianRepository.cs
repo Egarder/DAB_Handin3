@@ -15,6 +15,7 @@ namespace EmilMongoRepoTestudvikling.Repositories
         public ClinicianRepository(IMongoDbContext context) : base(context)
         {
         }
+
         public void AddClinician(Clinician clinician)
         {
             _dbCollection.InsertOne(clinician);

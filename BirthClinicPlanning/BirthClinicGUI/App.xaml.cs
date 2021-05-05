@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using BirthClinicGUI.ViewModels;
 using BirthClinicGUI.Views;
-using BirthClinicPlanningDB;
-using BirthClinicPlanningDB.DomainObjects;
+using EmilMongoRepoTestudvikling.Domainmodels;
 using Prism.Ioc;
 using Prism.Unity;
 

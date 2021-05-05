@@ -15,7 +15,7 @@ namespace BirthClinicGUI.ViewModels
 {
     class RestRoomViewModel : BindableBase, IDialogAware
     {
-        private IDataAccessActions access = new DataAccessActions(new Context());
+        private IDataAccessActions access;
         private IDialogService _dialog;
 
         private RestRoom _currentRestRoom;
@@ -48,6 +48,13 @@ namespace BirthClinicGUI.ViewModels
         }
         public RestRoomViewModel(IDialogService dialog)
         {
+            IMongoDbSettings settings = new MongoDbSettings();
+            settings.ConnectionString = "mongodb://localhost:27017";
+            settings.DatabaseName = "BirthClinicPlanning";
+            var context = new MongoDbContext(settings.ConnectionString, settings.DatabaseName);
+
+            access = new DataAccessActions(context);
+
             _dialog = dialog;
         }
         public bool CanCloseDialog()
@@ -87,8 +94,6 @@ namespace BirthClinicGUI.ViewModels
                     Occupied = false;
                 }
             }
-
-            access.Complete();
         }
 
         public string Title { get; }

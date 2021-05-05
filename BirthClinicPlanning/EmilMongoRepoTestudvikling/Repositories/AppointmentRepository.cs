@@ -18,7 +18,7 @@ namespace EmilMongoRepoTestudvikling.Repositories
         {
         }
 
-        public Appointment getSingleAppointment(string id)
+        public Appointment GetSingleAppointment(string id)
         {
             var projection = Builders<Appointment>.Projection.Include(b => b.AppointmentID).Include(c=>c.RoomID)
                 .Include(d=>d.StartTime)
@@ -40,7 +40,7 @@ namespace EmilMongoRepoTestudvikling.Repositories
             return tempobj;
         }
 
-        public ObservableCollection<Appointment> getAllAppointments()
+        public ObservableCollection<Appointment> GetAllAppointments()
         {
             return new ObservableCollection<Appointment>(_dbCollection.Find(new BsonDocument()).ToList());
         }

@@ -4,8 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BirthClinicPlanningDB;
-using BirthClinicPlanningDB.DomainObjects;
+using EmilMongoRepoTestudvikling;
+using EmilMongoRepoTestudvikling.Domainmodels;
 using Itenso.TimePeriod;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
@@ -14,7 +14,7 @@ namespace BirthClinicGUI.ViewModels
 {
     class MaternityRoomViewModel : BindableBase, IDialogAware
     {
-        private IDataAccessActions access = new DataAccessActions(new Context());
+        private IDataAccessActions access;
         private IDialogService _dialog;
 
         private MaternityRoom _currentMaternityRoom;
@@ -57,6 +57,13 @@ namespace BirthClinicGUI.ViewModels
 
         public MaternityRoomViewModel(IDialogService dialog)
         {
+            IMongoDbSettings settings = new MongoDbSettings();
+            settings.ConnectionString = "mongodb://localhost:27017";
+            settings.DatabaseName = "BirthClinicPlanning";
+            var context = new MongoDbContext(settings.ConnectionString, settings.DatabaseName);
+
+            access = new DataAccessActions(context);
+
             _dialog = dialog;
         }
 
@@ -100,8 +107,6 @@ namespace BirthClinicGUI.ViewModels
                         Occupied = false;
                     }
                 }
-
-                access.Complete();
         }
 
         public string Title { get; }

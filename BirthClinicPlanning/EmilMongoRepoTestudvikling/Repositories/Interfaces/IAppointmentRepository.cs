@@ -11,9 +11,9 @@ namespace EmilMongoRepoTestudvikling.Repositories.Interfaces
 {
     public interface IAppointmentRepository: IBaseRepository<Appointment>
     {
-        public Appointment getSingleAppointment(string id);
+        public Appointment GetSingleAppointment(string id);
 
-        public ObservableCollection<Appointment> getAllAppointments();
+        public ObservableCollection<Appointment> GetAllAppointments();
 
         public void Update(string id, Appointment appIn);
 

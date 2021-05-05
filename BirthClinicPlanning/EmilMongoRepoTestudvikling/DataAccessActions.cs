@@ -7,7 +7,7 @@ using EmilMongoRepoTestudvikling.Repositories.Interfaces;
 
 namespace EmilMongoRepoTestudvikling
 {
-    public class DataAccessActions:IDataAccessActions
+    public class DataAccessActions : IDataAccessActions
     {
         private readonly MongoDbContext _context;
         public IAppointmentRepository Appointments { get; private set; }
