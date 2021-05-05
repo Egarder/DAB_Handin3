@@ -1,11 +1,9 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using System;
 using System.Collections.ObjectModel;
-using EmilMongoRepoTestudvikling;
-using EmilMongoRepoTestudvikling.Domainmodels;
-using EmilMongoRepoTestudvikling.Repositories;
-using EmilMongoRepoTestudvikling.Repositories.Interfaces;
-using MongoDB.Bson;
-using MongoDB.Driver;
+using System.Linq;
+using BirthClinicMongoDB.Domainmodels;
+using BirthClinicMongoDB.Repositories.Interfaces;
 
 namespace BirthClinicMongoDB.Repositories
 {

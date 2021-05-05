@@ -1,17 +1,11 @@
-﻿using EmilMongoRepoTestudvikling.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EmilMongoRepoTestudvikling.Domainmodels;
-using Microsoft.EntityFrameworkCore;
-using MongoDB.Bson;
-using MongoDB.Driver;
-using Polly;
+using BirthClinicMongoDB.Domainmodels;
+using BirthClinicMongoDB.Repositories.Interfaces;
 
-namespace EmilMongoRepoTestudvikling.Repositories
+namespace BirthClinicMongoDB.Repositories
 {
     public class RestRoomRepository: BaseRepository<RestRoom>, IRestRoomRepository
     {

@@ -1,14 +1,11 @@
-﻿using EmilMongoRepoTestudvikling.Repositories.Interfaces;
+﻿using BirthClinicMongoDB.Domainmodels;
+using BirthClinicMongoDB.Repositories.Interfaces;
+using MongoDB.Bson;
 using MongoDB.Driver;
-using EmilMongoRepoTestudvikling.Domainmodels;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
-using MongoDB.Bson;
 
-namespace EmilMongoRepoTestudvikling.Repositories
+namespace BirthClinicMongoDB.Repositories
 {
     public class MaternityRoomRepository: BaseRepository<MaternityRoom>, IMaternityRoomRepository
     {

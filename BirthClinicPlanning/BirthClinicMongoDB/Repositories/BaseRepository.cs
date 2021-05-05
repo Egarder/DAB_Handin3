@@ -1,13 +1,12 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EmilMongoRepoTestudvikling.Repositories.Interfaces;
-using MongoDB.Bson;
-using MongoDB.Driver;
-using NetFusion.Common.Extensions;
+using BirthClinicMongoDB.Repositories.Interfaces;
 
-namespace EmilMongoRepoTestudvikling.Repositories
+namespace BirthClinicMongoDB.Repositories
 {
     public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {

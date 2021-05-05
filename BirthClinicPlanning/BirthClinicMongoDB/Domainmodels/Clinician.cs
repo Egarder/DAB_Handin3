@@ -5,7 +5,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
-namespace EmilMongoRepoTestudvikling.Domainmodels
+namespace BirthClinicMongoDB.Domainmodels
 {
     public class Clinician
     {

@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 
-namespace EmilMongoRepoTestudvikling.Domainmodels
+namespace BirthClinicMongoDB.Domainmodels
 {
     [BsonDiscriminator("BirthRoom")]
     public class BirthRoom : Room

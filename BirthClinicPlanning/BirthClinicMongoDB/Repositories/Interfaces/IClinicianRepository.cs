@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using EmilMongoRepoTestudvikling.Domainmodels;
+﻿using System.Collections.ObjectModel;
+using BirthClinicMongoDB.Domainmodels;
 
-namespace EmilMongoRepoTestudvikling.Repositories.Interfaces
+namespace BirthClinicMongoDB.Repositories.Interfaces
 {
     public interface IClinicianRepository: IBaseRepository<Clinician>
     {

@@ -1,4 +1,6 @@
-﻿namespace EmilMongoRepoTestudvikling.Domainmodels
+﻿
+
+namespace BirthClinicMongoDB.Domainmodels
 {
     public class MaternityRoom : Room
     {

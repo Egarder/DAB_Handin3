@@ -1,11 +1,7 @@
-﻿using System;
-using EmilMongoRepoTestudvikling.Domainmodels;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
+using BirthClinicMongoDB.Domainmodels;
 
-namespace EmilMongoRepoTestudvikling.Repositories.Interfaces
+namespace BirthClinicMongoDB.Repositories.Interfaces
 {
     public interface IMaternityRoomRepository: IBaseRepository<MaternityRoom>
     {

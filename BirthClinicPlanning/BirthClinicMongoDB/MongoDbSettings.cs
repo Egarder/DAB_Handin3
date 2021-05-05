@@ -1,4 +1,4 @@
-﻿namespace EmilMongoRepoTestudvikling
+﻿namespace BirthClinicMongoDB
 {
     public class MongoDbSettings: IMongoDbSettings
     {

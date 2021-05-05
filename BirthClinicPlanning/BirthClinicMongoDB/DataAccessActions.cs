@@ -1,7 +1,7 @@
-﻿using BirthClinicMongoDB.Repositories;
-using EmilMongoRepoTestudvikling;
+﻿
+using BirthClinicMongoDB.Repositories;
+using BirthClinicMongoDB.Repositories.Interfaces;
 using EmilMongoRepoTestudvikling.Repositories;
-using EmilMongoRepoTestudvikling.Repositories.Interfaces;
 
 namespace BirthClinicMongoDB
 {

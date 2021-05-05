@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BirthClinicMongoDB.Domainmodels;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using EmilMongoRepoTestudvikling.Domainmodels;
-using MongoDB.Bson;
-using MongoDB.Driver;
 
-namespace EmilMongoRepoTestudvikling.Repositories.Interfaces
+namespace BirthClinicMongoDB.Repositories.Interfaces
 {
     public interface IAppointmentRepository: IBaseRepository<Appointment>
     {
