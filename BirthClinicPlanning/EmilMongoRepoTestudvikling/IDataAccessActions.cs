@@ -9,5 +9,6 @@ namespace EmilMongoRepoTestudvikling
     public interface IDataAccessActions
     {
         public IAppointmentRepository Appointments { get; }
+        public IBirthRoomRepository BirthRooms { get; }
     }
 }

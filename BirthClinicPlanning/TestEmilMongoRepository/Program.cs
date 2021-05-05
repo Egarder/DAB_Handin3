@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using EmilMongoRepoTestudvikling;
 using EmilMongoRepoTestudvikling.Domainmodels;
 using EmilMongoRepoTestudvikling.Repositories;
+using EmilMongoRepoTestudvikling.Repositories.Interfaces;
 using Json.Net;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Extensions;
@@ -23,6 +25,28 @@ namespace TestEmilMongoRepository
             var context = new MongoDbContext(settings.ConnectionString, settings.DatabaseName);
 
             IDataAccessActions access = new DataAccessActions(context);
+
+            IBirthRoomRepository testBirthRoomRepository = new BirthRoomRepository(context);
+
+            var roomToInsert = new BirthRoom()
+            {
+                Appointments = new ObservableCollection<Appointment>(), 
+                RoomNumber = 2,
+                RoomType = "BirthRoom"
+            };
+
+            //testBirthRoomRepository.AddBirthRoom(roomToInsert);
+
+            //var roomToPrint = testBirthRoomRepository.GetSingleBirthRoom("6092562a010aee0d36787cce");
+
+            //Console.WriteLine($"{roomToPrint.RoomNumber}, {roomToPrint.Occupied}, {roomToPrint.RoomType}");
+
+            var roomsToPrint = testBirthRoomRepository.GetAllBirthsRooms();
+
+            foreach (var room in roomsToPrint)
+            {
+                Console.WriteLine($"{room.RoomNumber}, {room.Occupied}, {room.RoomType}");
+            }
 
             ////==== DB context test = Works! ====================================================
             //var databaser = context.listDatabases();
@@ -44,9 +68,9 @@ namespace TestEmilMongoRepository
 
             ////===== Test af Appointment Repository getsingleappointment = Works!   But needs more methods....=====================
 
-            var tester = access.Appointments.getSingleAppointment("5");
+            //var tester = access.Appointments.getSingleAppointment("5");
 
-            Console.WriteLine(tester.StartTime);
+            //Console.WriteLine(tester.StartTime);
 
             //=======Test af getAllAppointmentsmetoder====
 

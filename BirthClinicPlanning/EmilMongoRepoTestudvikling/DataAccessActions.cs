@@ -11,11 +11,13 @@ namespace EmilMongoRepoTestudvikling
     {
         private readonly MongoDbContext _context;
         public IAppointmentRepository Appointments { get; private set; }
+        public IBirthRoomRepository BirthRooms { get; private set; }
 
         public DataAccessActions(MongoDbContext context)
         {
             _context = context;
             Appointments = new AppointmentRepository(_context);
+            BirthRooms = new BirthRoomRepository(_context);
         }
     }
 }
