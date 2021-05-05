@@ -1,7 +1,5 @@
-﻿
-using BirthClinicMongoDB.Repositories;
+﻿using BirthClinicMongoDB.Repositories;
 using BirthClinicMongoDB.Repositories.Interfaces;
-using EmilMongoRepoTestudvikling.Repositories;
 
 namespace BirthClinicMongoDB
 {
@@ -19,7 +17,7 @@ namespace BirthClinicMongoDB
             _context = context;
             Appointments = new AppointmentRepository(_context);
             BirthRooms = new BirthRoomRepository(_context);
-            RestRooms = new RestRoomRepository(_context);
+            RestRooms = new Room(_context);
             MaternityRooms = new MaternityRoomRepository(_context);
             Clinicians = new ClinicianRepository(_context);
         }

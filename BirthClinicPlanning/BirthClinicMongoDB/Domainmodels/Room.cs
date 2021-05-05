@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using MongoDB.Bson;
+﻿using System.Collections.ObjectModel;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
@@ -8,8 +6,6 @@ namespace BirthClinicMongoDB.Domainmodels
 {
     public class Room
     {
-        //[BsonId]
-        //[BsonRepresentation(BsonType.ObjectId)]
         [BsonElement("RoomID")]
         [JsonProperty("RoomID")]
         public string RoomID { get; set; }

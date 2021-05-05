@@ -1,6 +1,4 @@
-﻿using EmilMongoRepoTestudvikling;
-using EmilMongoRepoTestudvikling.Domainmodels;
-using Itenso.TimePeriod;
+﻿using Itenso.TimePeriod;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
@@ -9,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using BirthClinicMongoDB;
+using BirthClinicMongoDB.Domainmodels;
 
 namespace BirthClinicGUI.ViewModels
 {
@@ -106,7 +105,7 @@ namespace BirthClinicGUI.ViewModels
         }
         public void AddAppointmentToBirthRoom()
         {
-            BirthRoom roomToInsert = access.BirthRooms.GetBirthRoomWithSpecificNumber(Appointment.Room.RoomNumber);
+            Room roomToInsert = access.BirthRooms.GetBirthRoomWithSpecificNumber(Appointment.Room.RoomNumber);
 
             foreach (var appointment in roomToInsert.Appointments)
             {

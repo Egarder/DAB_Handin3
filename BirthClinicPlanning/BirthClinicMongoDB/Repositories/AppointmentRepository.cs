@@ -33,7 +33,7 @@ namespace BirthClinicMongoDB.Repositories
                 RoomID = bson.GetElement("RoomID").Value.AsInt32,
                 StartTime = (DateTime) bson.GetElement("StartTime").Value,
                 EndTime = (DateTime) bson.GetElement("EndTime").Value,
-                Room = new Room() {RoomNumber = bson.GetElement("Room: {RoomNumber}").Value.AsInt32 }
+                //Room = new Room() {RoomNumber = bson.GetElement("Room: {RoomNumber}").Value.AsInt32 }
             };
 
             return tempobj;
@@ -62,7 +62,7 @@ namespace BirthClinicMongoDB.Repositories
                     RoomID = item.GetElement("RoomID").Value.AsInt32,
                     StartTime = (DateTime)item.GetElement("StartTime").Value,
                     EndTime = (DateTime)item.GetElement("EndTime").Value,
-                    Room = new Room() { RoomNumber = item.GetElement("Room: {RoomNumber}").Value.AsInt32 }
+                    Room = new Domainmodels.Room() { RoomNumber = item.GetElement("Room: {RoomNumber}").Value.AsInt32 }
                 };
 
                 tempobjcollection.Add(tempobj);

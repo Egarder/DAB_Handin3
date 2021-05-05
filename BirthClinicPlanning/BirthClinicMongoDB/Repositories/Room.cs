@@ -7,24 +7,23 @@ using BirthClinicMongoDB.Repositories.Interfaces;
 
 namespace BirthClinicMongoDB.Repositories
 {
-    public class RestRoomRepository: BaseRepository<RestRoom>, IRestRoomRepository
+    public class Room: BaseRepository<Room>, IRoomRepository
     {
-        public RestRoomRepository(IMongoDbContext context) : base(context)
+        public Room(IMongoDbContext context) : base(context)
         {
-
         }
 
-        public ObservableCollection<RestRoom> GetAllRestRoom()
+        public ObservableCollection<Room> GetAllRestRoom()
         {
-            return new ObservableCollection<RestRoom>(_dbCollection.Find(new BsonDocument()).ToList());
+            return new ObservableCollection<Room>(_dbCollection.Find(new BsonDocument()).ToList());
         }
 
-        public RestRoom GetRestRoomWithSpecificNumber(int no)
+        public Room GetRestRoomWithSpecificNumber(int no)
         {
             return _dbCollection.Find(r => r.RoomNumber == no).SingleOrDefault();
         }
 
-        public RestRoom GetSingleRestRoom(string id)
+        public Room GetSingleRestRoom(string id)
         {
             return _dbCollection.Find(r => r.RoomID == id).SingleOrDefault();
         }
@@ -34,12 +33,12 @@ namespace BirthClinicMongoDB.Repositories
             _dbCollection.Find(r => r.RoomID == roomid).SingleOrDefault().Appointments.Add(appointment);
         }
 
-        public void AddRestRoom(RestRoom restRoom)
+        public void AddRestRoom(Room restRoom)
         {
             _dbCollection.InsertOne(restRoom);
         }
 
-        public void DelRestRoom(RestRoom restRoom)
+        public void DelRestRoom(Room restRoom)
         {
             _dbCollection.DeleteOne(r => r.RoomID == restRoom.RoomID);
         }

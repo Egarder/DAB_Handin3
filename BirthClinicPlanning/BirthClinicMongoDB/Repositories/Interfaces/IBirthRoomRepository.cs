@@ -3,15 +3,15 @@ using BirthClinicMongoDB.Domainmodels;
 
 namespace BirthClinicMongoDB.Repositories.Interfaces
 {
-    public interface IBirthRoomRepository : IBaseRepository<BirthRoom>
+    public interface IBirthRoomRepository : IBaseRepository<Domainmodels.Room>
     {
-        public ObservableCollection<BirthRoom> GetAllBirthsRooms();
+        public ObservableCollection<Domainmodels.Room> GetAllBirthsRooms();
 
-        public BirthRoom GetBirthRoomWithSpecificNumber(int no);
+        public Domainmodels.Room GetBirthRoomWithSpecificNumber(int no);
 
 
-        public BirthRoom GetSingleBirthRoom(string id);
+        public Domainmodels.Room GetSingleBirthRoom(string id);
 
-        public void AddBirthRoom(BirthRoom room);
+        public void AddBirthRoom(Domainmodels.Room room);
     }
 }

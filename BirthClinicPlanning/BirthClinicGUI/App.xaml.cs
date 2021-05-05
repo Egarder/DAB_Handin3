@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using BirthClinicGUI.ViewModels;
+﻿using BirthClinicGUI.ViewModels;
 using BirthClinicGUI.Views;
-using EmilMongoRepoTestudvikling.Domainmodels;
 using Prism.Ioc;
 using Prism.Unity;
+using System.Windows;
+using BirthClinicMongoDB.Domainmodels;
 
 namespace BirthClinicGUI
 {

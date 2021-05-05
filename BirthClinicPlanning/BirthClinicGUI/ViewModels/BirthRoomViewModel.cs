@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BirthClinicMongoDB;
-using EmilMongoRepoTestudvikling;
-using EmilMongoRepoTestudvikling.Domainmodels;
+﻿using BirthClinicMongoDB;
 using Itenso.TimePeriod;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
+using System;
+using System.Collections.ObjectModel;
+using BirthClinicMongoDB.Domainmodels;
 
 namespace BirthClinicGUI.ViewModels
 {
@@ -18,8 +13,8 @@ namespace BirthClinicGUI.ViewModels
         private IDataAccessActions access;
         private IDialogService _dialog;
 
-        private BirthRoom _currentBirthRoom;
-        public BirthRoom CurrentBirthRoom
+        private Room _currentBirthRoom;
+        public Room CurrentBirthRoom
         {
             get => _currentBirthRoom;
             set => SetProperty(ref _currentBirthRoom, value);

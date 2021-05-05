@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using BirthClinicMongoDB;
-using EmilMongoRepoTestudvikling;
-using EmilMongoRepoTestudvikling.Domainmodels;
+﻿using BirthClinicMongoDB;
 using Itenso.TimePeriod;
-using Polly;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
+using System.Windows.Input;
+using BirthClinicMongoDB.Domainmodels;
 
 namespace BirthClinicGUI.ViewModels
 {
@@ -109,7 +105,7 @@ namespace BirthClinicGUI.ViewModels
 
         private void ChangeToBirthRoom()
         {
-            ObservableCollection<BirthRoom> birthRooms = access.BirthRooms.GetAllBirthsRooms();
+            ObservableCollection<Room> birthRooms = access.BirthRooms.GetAllBirthsRooms();
 
             foreach (var room in birthRooms)
             {

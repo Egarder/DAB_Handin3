@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using BirthClinicMongoDB;
-using EmilMongoRepoTestudvikling;
-using EmilMongoRepoTestudvikling.Domainmodels;
-using Polly;
+﻿using BirthClinicMongoDB;
+using BirthClinicMongoDB.Domainmodels;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
+using System;
+using System.Collections.ObjectModel;
 
 namespace BirthClinicGUI.ViewModels
 {
@@ -48,7 +40,7 @@ namespace BirthClinicGUI.ViewModels
             RestRooms = new ObservableCollection<RestRoom>();
             RestRooms = access.RestRooms.GetAllRestRoom();
 
-            BirthRooms = new ObservableCollection<BirthRoom>();
+            BirthRooms = new ObservableCollection<Room>();
             BirthRooms = access.BirthRooms.GetAllBirthsRooms();
 
             MaternityRooms = new ObservableCollection<MaternityRoom>();
@@ -88,13 +80,13 @@ namespace BirthClinicGUI.ViewModels
         }
 
 
-        private ObservableCollection<BirthRoom> _birthRooms;  //Birthroom
-        public ObservableCollection<BirthRoom> BirthRooms
+        private ObservableCollection<Room> _birthRooms;  //Birthroom
+        public ObservableCollection<Room> BirthRooms
         {
             get => _birthRooms;
             set => SetProperty(ref _birthRooms, value);
         }
-        public BirthRoom CurrentBirthRoom { get; set; }
+        public Room CurrentBirthRoom { get; set; }
 
         public string CurrentBirthRoomId
         {
