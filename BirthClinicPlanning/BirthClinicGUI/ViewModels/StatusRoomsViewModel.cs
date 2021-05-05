@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using BirthClinicMongoDB;
 using EmilMongoRepoTestudvikling;
 using EmilMongoRepoTestudvikling.Domainmodels;
 using Polly;

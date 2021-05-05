@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using BirthClinicMongoDB;
 using EmilMongoRepoTestudvikling;
 using EmilMongoRepoTestudvikling.Domainmodels;
 using EmilMongoRepoTestudvikling.Repositories;
 using EmilMongoRepoTestudvikling.Repositories.Interfaces;
 using Json.Net;
 using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Extensions;
 using MongoDB.Bson;
 using MongoDB.Bson.IO;
 using MongoDB.Driver;
@@ -68,9 +68,9 @@ namespace TestEmilMongoRepository
 
             ////===== Test af Appointment Repository getsingleappointment = Works!   But needs more methods....=====================
 
-            var tester = access.Appointments.getSingleAppointment("4");
+            //var tester = access.Appointments.getSingleAppointment("4");
 
-            Console.WriteLine(tester.StartTime);
+            //Console.WriteLine(tester.Room);
 
 
             //==== Test af Appointment Repo create = Works!========================================
