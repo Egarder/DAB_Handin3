@@ -18,10 +18,11 @@ namespace EmilMongoRepoTestudvikling.Repositories
         {
         }
 
-        public Appointment GetSingleAppointment(string id)
+        public Appointment getSingleAppointment(string id)
         {
             var projection = Builders<Appointment>.Projection.Include(b => b.AppointmentID).Include(c=>c.RoomID)
-                .Include(d=>d.StartTime).Include(e=>e.EndTime)
+                .Include(d=>d.StartTime)
+                .Include(e=>e.EndTime)
                 .Include(f=>f.Room); //Add other properties
 
             var bson = _dbCollection.Find<Appointment>(app => app.AppointmentID == id).Project(projection)
@@ -39,12 +40,11 @@ namespace EmilMongoRepoTestudvikling.Repositories
             return tempobj;
         }
 
-        public List<Appointment> GetAllAppointments()
+        public ObservableCollection<Appointment> getAllAppointments()
         {
             var temp = _dbCollection.Find(new BsonDocument()).ToList();
 
-
-            return temp;
+            return temp as ObservableCollection<Appointment>;
         }
 
         public void Update(string id, Appointment appIn) =>
@@ -53,6 +53,11 @@ namespace EmilMongoRepoTestudvikling.Repositories
         public void AddAppointment(Appointment app)
         {
            _dbCollection.InsertOne(app);
+        }
+
+        public void DelAppointment(Appointment appointment)
+        {
+
         }
 
         public MongoDbContext context
