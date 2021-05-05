@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BirthClinicPlanningMongoDbWebAPI.DomainObjects;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -14,7 +15,6 @@ namespace EmilMongoRepoTestudvikling.Repositories.Interfaces
 
         public RestRoom GetRestRoomWithSpecificNumber(int no);
 
-        public RestRoom GetSingleRestRoom(string id);
 
         public void DelRestRoom(RestRoom restRoom);
 
