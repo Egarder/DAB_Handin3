@@ -25,7 +25,7 @@ namespace BirthClinicMongoDB.Repositories.Interfaces
 
         public void AddRoom(Room restRoom);
 
-        public void UpdateRoom(Room restRoom);
+        public void UpdateRoom(Room restRoom, Appointment appointment);
 
         public bool RoomsExist();
     }

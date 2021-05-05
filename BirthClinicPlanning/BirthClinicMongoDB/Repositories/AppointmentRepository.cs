@@ -50,7 +50,10 @@ namespace BirthClinicMongoDB.Repositories
 
         public void UpdateAppointment(Appointment appointment)
         {
-            _dbCollection.ReplaceOne(a => a.AppointmentID == appointment.AppointmentID, appointment);
+            _dbCollection.UpdateOne(a => a.AppointmentBsonId == appointment.AppointmentBsonId,
+                new ObjectUpdateDefinition<Appointment>(appointment.Room));
+
+            //_dbCollection.ReplaceOne(a => a.AppointmentID == appointment.AppointmentID, appointment);
         }
 
         public long CountAppointments()

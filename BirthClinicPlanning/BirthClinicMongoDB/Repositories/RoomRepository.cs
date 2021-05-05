@@ -50,7 +50,7 @@ namespace BirthClinicMongoDB.Repositories
 
         public Room GetSingleRoom(string id)
         {
-            return _dbCollection.Find(r => r.RoomID == id).SingleOrDefault();
+            return _dbCollection.Find(r => r.RoomBsonID == id).SingleOrDefault();
         }
 
         public void DelRestRoom(Room room)
@@ -79,9 +79,14 @@ namespace BirthClinicMongoDB.Repositories
             _dbCollection.DeleteOne(r => r.RoomID == room.RoomID);
         }
 
-        public void UpdateRoom(Room room)
+        public void UpdateRoom(Room room, Appointment appointment)
         {
-            _dbCollection.ReplaceOne(r => r.RoomID == room.RoomID, room);
+            var update = Builders<Room>.Update
+                .Push<Appointment>(e => e.Appointments, appointment);
+
+            _dbCollection.UpdateOne(r => r.RoomBsonID == room.RoomBsonID, update);
+
+            //_dbCollection.ReplaceOne(r => r.RoomID == room.RoomID, room);
         }
 
         public MongoDbContext context
