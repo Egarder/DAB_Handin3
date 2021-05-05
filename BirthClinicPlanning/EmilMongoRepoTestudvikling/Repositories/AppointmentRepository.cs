@@ -55,7 +55,10 @@ namespace EmilMongoRepoTestudvikling.Repositories
 
         public void DelAppointment(Appointment appointment)
         {
+            var id = appointment.AppointmentID;
+            var objectid = new ObjectId(id);
 
+            _dbCollection.DeleteOneAsync(Builders<Appointment>.Filter.Eq("_id", objectid));
         }
 
         public MongoDbContext context

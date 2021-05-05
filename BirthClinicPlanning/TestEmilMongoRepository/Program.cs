@@ -60,11 +60,11 @@ namespace TestEmilMongoRepository
 
             ////===== Test af Appointment Repository getallappointments og update = Almost works....=====================
 
-            var list = access.Appointments.getAllAppointments();
-            foreach (var item in list)
-            {
-                Console.WriteLine($"{item.AppointmentID},");
-            }
+            //var list = access.Appointments.getAllAppointments();
+            //foreach (var item in list)
+            //{
+            //    Console.WriteLine($"{item.AppointmentID},");
+            //}
 
             ////===== Test af Appointment Repository getsingleappointment = Works!   But needs more methods....=====================
 
@@ -103,6 +103,11 @@ namespace TestEmilMongoRepository
             //    Console.WriteLine($"{item.AppointmentID}");
             //}
 
+            ////==== Appointment delete test = Works! ====================================================
+
+            var tester = access.Appointments.getSingleAppointment("5");
+
+            access.Appointments.DelAppointment(tester);
         }
 
     }
