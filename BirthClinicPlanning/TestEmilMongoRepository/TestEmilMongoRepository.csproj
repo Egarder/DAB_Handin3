@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EmilMongoRepoTestudvikling\EmilMongoRepoTestudvikling.csproj" />
+    <ProjectReference Include="..\BirthClinicMongoDB\BirthClinicMongoDB.csproj" />
   </ItemGroup>
 
 </Project>
