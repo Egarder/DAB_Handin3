@@ -2,9 +2,9 @@
 
 namespace EmilMongoRepoTestudvikling.Domainmodels
 {
+    [BsonDiscriminator("RestRoom")]
     public class RestRoom : Room
     {
-        [BsonDiscriminator("RestRoom")]
         public RestRoom() : base()
         {
             base.RoomType = "Rest Room";

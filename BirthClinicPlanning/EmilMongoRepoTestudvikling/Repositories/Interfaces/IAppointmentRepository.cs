@@ -10,11 +10,9 @@ namespace EmilMongoRepoTestudvikling.Repositories.Interfaces
 {
     public interface IAppointmentRepository: IBaseRepository<Appointment>
     {
-        public Appointment getSingleAppointment(string id);
+        public Appointment GetSingleAppointment(string id);
 
-        public List<Appointment> getAllAppointments();
-
-        public List<Appointment> getAllAppointments2();
+        public List<Appointment> GetAllAppointments();
 
         public void Update(string id, Appointment appIn);
 

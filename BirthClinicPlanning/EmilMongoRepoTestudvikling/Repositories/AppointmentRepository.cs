@@ -18,7 +18,7 @@ namespace EmilMongoRepoTestudvikling.Repositories
         {
         }
 
-        public Appointment getSingleAppointment(string id)
+        public Appointment GetSingleAppointment(string id)
         {
             var projection = Builders<Appointment>.Projection.Include(b => b.AppointmentID).Include(c=>c.RoomID)
                 .Include(d=>d.StartTime).Include(e=>e.EndTime)
@@ -39,16 +39,13 @@ namespace EmilMongoRepoTestudvikling.Repositories
             return tempobj;
         }
 
-        public List<Appointment> getAllAppointments2()
+        public List<Appointment> GetAllAppointments()
         {
             var temp = _dbCollection.Find(new BsonDocument()).ToList();
 
 
             return temp;
         }
-
-        public List<Appointment> getAllAppointments() =>
-            _dbCollection.Find(Appointment => Appointment.AppointmentID!=null).ToList(); //Exception med ID kommer her. 
 
         public void Update(string id, Appointment appIn) =>
             _dbCollection.ReplaceOne(app => app.AppointmentID == id, appIn);
