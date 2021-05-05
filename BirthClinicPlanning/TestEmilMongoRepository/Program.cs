@@ -72,14 +72,6 @@ namespace TestEmilMongoRepository
 
             //Console.WriteLine(tester.StartTime);
 
-            //=======Test af getAllAppointmentsmetoder====
-
-            //var tester2 = access.Appointments.getAllAppointments2();
-
-            //foreach (var item in tester2)
-            //{
-            //    Console.WriteLine($"{item.AppointmentID}");
-            //}
 
             //==== Test af Appointment Repo create = Works!========================================
             //Appointment newapp = new Appointment()
@@ -108,6 +100,10 @@ namespace TestEmilMongoRepository
             //var tester = access.Appointments.getSingleAppointment("5");
 
             //access.Appointments.DelAppointment(tester);
+
+            Clinician test = new Clinician() {FirstName = "Arnje", LastName = "Bjarne"};
+
+            access.Clinicians.AddClinician(test);
         }
 
     }
