@@ -2,7 +2,7 @@
 {
     public interface IMongoDbSettings
     {
-        string DatabaseName { get; set; }
-        string ConnectionString { get; set; }
+        static string DatabaseName { get; set; }
+        static string ConnectionString { get; set; }
     }
 }
