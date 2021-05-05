@@ -96,6 +96,11 @@ namespace BirthClinicMongoDB.Repositories
             _dbCollection.DeleteOneAsync(Builders<Appointment>.Filter.Eq("AppointmentID", id));
         }
 
+        public bool AppointmentsExist()
+        {
+            return _dbCollection.Find(FilterDefinition<Appointment>.Empty).Any();
+        }
+
         public MongoDbContext context
         {
             get { return context as MongoDbContext; }

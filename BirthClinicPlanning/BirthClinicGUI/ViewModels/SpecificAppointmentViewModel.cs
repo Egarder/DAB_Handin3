@@ -105,7 +105,7 @@ namespace BirthClinicGUI.ViewModels
 
         private void ChangeToBirthRoom()
         {
-            ObservableCollection<Room> birthRooms = access.BirthRooms.GetAllBirthsRooms();
+            ObservableCollection<Room> birthRooms = access.Rooms.GetAllBirthRooms();
 
             foreach (var room in birthRooms)
             {
@@ -138,7 +138,7 @@ namespace BirthClinicGUI.ViewModels
 
         private void ChangeToMaternityRoom()
         {
-            ObservableCollection<MaternityRoom> maternityRooms = access.MaternityRooms.GetAllMaternityRooms();
+            ObservableCollection<Room> maternityRooms = access.Rooms.GetAllMaternityRooms();
 
             foreach (var room in maternityRooms)
             {

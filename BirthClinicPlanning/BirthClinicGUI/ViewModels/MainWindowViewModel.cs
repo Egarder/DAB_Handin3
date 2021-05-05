@@ -5,6 +5,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
@@ -62,25 +63,31 @@ namespace BirthClinicGUI.ViewModels
 
         }
 
-        internal void SetUpRoomsAppointmentsListInDb() 
+        private void SetUpRoomsAppointmentsListInDb() 
         {
-            var room1 = access.RestRooms.GetSingleRestRoom("1");
+            var room1 = access.Rooms.GetSingleRoom("1"); // RestRoom
 
-            var appoint1 = access.Appointments.GetSingleAppointment(room1.RoomID);
+            var appoint1 = access.Appointments.GetSingleAppointment("1");
 
-            var temp = room1.Appointments.FindFirst(a => a.AppointmentID == appoint1.AppointmentID);
+            if (room1.Appointments != null)
+            {
+                var temp = room1.Appointments.Any(a => a.AppointmentID == appoint1.AppointmentID);
 
-            if (temp == null)
-                room1.Appointments.Add(appoint1);
+                if (!temp)
+                    room1.Appointments.Add(appoint1);
+            }
 
-            var room2 = access.RestRooms.GetSingleRestRoom("2"); // skal have et andet id
+            var room2 = access.Rooms.GetSingleRoom("2"); // RestRoom
 
-            var appoint2 = access.Appointments.GetSingleAppointment(room2.RoomID);
+            var appoint2 = access.Appointments.GetSingleAppointment("2");
 
-            var temp2 = room2.Appointments.FindFirst(b => b.AppointmentID == appoint2.AppointmentID);
+            if (room2.Appointments != null)
+            {
+                var temp2 = room2.Appointments.Any(b => b.AppointmentID == appoint2.AppointmentID);
 
-            if (temp2 == null)
-                room2.Appointments.Add(appoint2);
+                if (!temp2)
+                    room2.Appointments.Add(appoint2);
+            }
         }
 
         private ICommand _addAppointmentCommand;

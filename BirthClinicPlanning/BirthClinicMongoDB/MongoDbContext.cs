@@ -40,11 +40,14 @@ namespace BirthClinicMongoDB
 
         public void Seed(IDataAccessActions context)
         {
-            SeedClinicians(context);
+            if (!context.Clinicians.CliniciansExist())
+                SeedClinicians(context);
 
-            SeedRooms(context);
+            if(!context.Rooms.RoomsExist())
+                SeedRooms(context);
 
-            SeedAppointments(context);
+            if (!context.Appointments.AppointmentsExist())
+                SeedAppointments(context);
         }
 
         private static void SeedAppointments(IDataAccessActions modelBuilder)
@@ -545,145 +548,167 @@ namespace BirthClinicMongoDB
                  modelBuilder.Rooms.AddRoom(room);
             }
 
-            var matrooms = new ObservableCollection<MaternityRoom>
+            var matrooms = new ObservableCollection<Room>
             {
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "6",
                     RoomNumber = 1,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "7",
                     RoomNumber = 2,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "8",
                     RoomNumber = 3,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "9",
                     RoomNumber = 4,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "10",
                     RoomNumber = 5,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "11",
                     RoomNumber = 6,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "12",
                     RoomNumber = 7,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "13",
                     RoomNumber = 8,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "14",
                     RoomNumber = 9,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "15",
                     RoomNumber = 10,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "16",
                     RoomNumber = 11,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "17",
                     RoomNumber = 12,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "18",
                     RoomNumber = 13,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "19",
                     RoomNumber = 14,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "20",
                     RoomNumber = 15,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "21",
                     RoomNumber = 16,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "22",
                     RoomNumber = 17,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "23",
                     RoomNumber = 18,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "24",
                     RoomNumber = 19,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "25",
                     RoomNumber = 20,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "26",
                     RoomNumber = 21,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
                 },
-                new MaternityRoom()
+                new Room()
                 {
                     RoomID = "27",
                     RoomNumber = 22,
-                    Occupied = false
-                }
+                    Occupied = false,
+                    RoomType = "MaternityRoom"
+                },
             };
 
             foreach (var room in matrooms)
             {
-                modelBuilder.MaternityRooms.AddMaternity(room);
+                modelBuilder.Rooms.AddRoom(room);
             }
 
 
@@ -693,97 +718,112 @@ namespace BirthClinicMongoDB
                 {
                     RoomID = "28",
                     RoomNumber = 1,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "BirthRoom"
                 },
                 new Room()
                 {
                     RoomID = "29",
                     RoomNumber = 2,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "BirthRoom"
                 },
                 new Room()
                 {
                     RoomID = "30",
                     RoomNumber = 3,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "BirthRoom"
                 },
                 new Room()
                 {
                     RoomID = "31",
                     RoomNumber = 4,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "BirthRoom"
                 },
                 new Room()
                 {
                     RoomID = "32",
                     RoomNumber = 5,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "BirthRoom"
                 },
                 new Room()
                 {
                     RoomID = "33",
                     RoomNumber = 6,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "BirthRoom"
                 },
                 new Room()
                 {
                     RoomID = "34",
                     RoomNumber = 7,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "BirthRoom"
                 },
                 new Room()
                 {
                     RoomID = "35",
                     RoomNumber = 8,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "BirthRoom"
                 },
                 new Room()
                 {
                     RoomID = "36",
                     RoomNumber = 9,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "BirthRoom"
                 },
                 new Room()
                 {
                     RoomID = "37",
                     RoomNumber = 10,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "BirthRoom"
                 },
                 new Room()
                 {
                     RoomID = "38",
                     RoomNumber = 11,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "BirthRoom"
                 },
                 new Room()
                 {
                     RoomID = "39",
                     RoomNumber = 12,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "BirthRoom"
                 },
                 new Room()
                 {
                     RoomID = "40",
                     RoomNumber = 13,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "BirthRoom"
                 },
                 new Room()
                 {
                     RoomID = "41",
                     RoomNumber = 14,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "BirthRoom"
                 },
                 new Room()
                 {
                     RoomID = "42",
                     RoomNumber = 15,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "BirthRoom"
                 }
             };
 
             foreach (var room in birthrooms)
             {
-                modelBuilder.BirthRooms.AddBirthRoom(room);
+                modelBuilder.Rooms.AddRoom(room);
             }
         }
     }

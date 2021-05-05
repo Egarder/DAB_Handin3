@@ -89,7 +89,7 @@ namespace BirthClinicGUI.ViewModels
                 return;
             }
 
-            RestRoom roomToInsert = access.RestRooms.GetRestRoomWithSpecificNumber(Appointment.Room.RoomNumber);
+            Room roomToInsert = access.Rooms.GetRoomWithSpecificNumber(Appointment.Room.RoomNumber);
 
             foreach (var appointment in roomToInsert.Appointments)
             {
@@ -105,7 +105,7 @@ namespace BirthClinicGUI.ViewModels
         }
         public void AddAppointmentToBirthRoom()
         {
-            Room roomToInsert = access.BirthRooms.GetBirthRoomWithSpecificNumber(Appointment.Room.RoomNumber);
+            Room roomToInsert = access.Rooms.GetBirthRoomWithSpecificNumber(Appointment.Room.RoomNumber);
 
             foreach (var appointment in roomToInsert.Appointments)
             {
@@ -122,7 +122,7 @@ namespace BirthClinicGUI.ViewModels
 
         public void AddAppointmentToMaternityRoom()
         {
-            MaternityRoom roomToInsert = access.MaternityRooms.GetMaternityRoomWithSpecificNumber(Appointment.Room.RoomNumber);
+            Room roomToInsert = access.Rooms.GetMaternityRoomWithSpecificNumber(Appointment.Room.RoomNumber);
 
             foreach (var appointment in roomToInsert.Appointments)
             {

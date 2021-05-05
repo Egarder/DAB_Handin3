@@ -7,7 +7,17 @@ namespace BirthClinicMongoDB.Repositories.Interfaces
     {
         public ObservableCollection<Room> GetAllRooms();
 
+        public ObservableCollection<Room> GetAllBirthRooms();
+        public ObservableCollection<Room> GetAllRestRooms();
+        public ObservableCollection<Room> GetAllMaternityRooms();
+
         public Room GetRoomWithSpecificNumber(int no);
+
+        public Room GetBirthRoomWithSpecificNumber(int no);
+
+        public Room GetRestRoomWithSpecificNumber(int no);
+
+        public Room GetMaternityRoomWithSpecificNumber(int no);
 
         public Room GetSingleRoom(string id);
 
@@ -16,5 +26,7 @@ namespace BirthClinicMongoDB.Repositories.Interfaces
         public void AddAppointmentToRoom(string roomid, Appointment appointment);
 
         public void AddRoom(Room restRoom);
+
+        public bool RoomsExist();
     }
 }

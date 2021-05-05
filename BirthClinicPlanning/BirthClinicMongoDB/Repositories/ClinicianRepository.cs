@@ -18,6 +18,12 @@ namespace BirthClinicMongoDB.Repositories
             _dbCollection.InsertOne(clinician);
         }
 
+        public bool CliniciansExist()
+        {
+            var test =_dbCollection.Find(FilterDefinition<Clinician>.Empty).Any();
+            return test;
+        }
+
         public ObservableCollection<Clinician> GetAllClinicians()
         {
             return new ObservableCollection<Clinician>(_dbCollection.Find(new BsonDocument()).ToList());

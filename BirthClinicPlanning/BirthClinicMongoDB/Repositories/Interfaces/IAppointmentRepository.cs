@@ -14,5 +14,7 @@ namespace BirthClinicMongoDB.Repositories.Interfaces
         public void AddAppointment(Appointment app);
 
         public void DelAppointment(Appointment appointment);
+
+        public bool AppointmentsExist();
     }
 }

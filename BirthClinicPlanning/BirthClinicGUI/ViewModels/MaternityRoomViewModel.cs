@@ -13,8 +13,8 @@ namespace BirthClinicGUI.ViewModels
         private IDataAccessActions access;
         private IDialogService _dialog;
 
-        private MaternityRoom _currentMaternityRoom;
-        public MaternityRoom CurrentMaternityRoom
+        private Room _currentMaternityRoom;
+        public Room CurrentMaternityRoom
         {
             get => _currentMaternityRoom;
             set => SetProperty(ref _currentMaternityRoom, value);
@@ -78,7 +78,7 @@ namespace BirthClinicGUI.ViewModels
         {
             int roomid = int.Parse(parameters.GetValue<string>("Message"));
 
-            CurrentMaternityRoom = access.MaternityRooms.GetMaternityRoomWithSpecificNumber(roomid);
+            CurrentMaternityRoom = access.Rooms.GetRoomWithSpecificNumber(roomid);
 
             
                 AppointmentsForRoom = CurrentMaternityRoom.Appointments;

@@ -10,5 +10,7 @@ namespace BirthClinicMongoDB.Repositories.Interfaces
         public Clinician GetSingleClinician(string id);
 
         public void AddClinician(Clinician clinician);
+
+        public bool CliniciansExist();
     }
 }

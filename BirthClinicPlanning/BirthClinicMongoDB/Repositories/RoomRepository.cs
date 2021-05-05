@@ -18,9 +18,39 @@ namespace BirthClinicMongoDB.Repositories
             return new ObservableCollection<Room>(_dbCollection.Find(new BsonDocument()).ToList());
         }
 
+        public ObservableCollection<Room> GetAllBirthRooms()
+        {
+            return new ObservableCollection<Room>(_dbCollection.Find(r => r.RoomType == "BirthRoom").ToList());
+        }
+
+        public ObservableCollection<Room> GetAllRestRooms()
+        {
+            return new ObservableCollection<Room>(_dbCollection.Find(r => r.RoomType == "RestRoom").ToList());
+        }
+
+        public ObservableCollection<Room> GetAllMaternityRooms()
+        {
+            return new ObservableCollection<Room>(_dbCollection.Find(r => r.RoomType == "MaternityRoom").ToList());
+        }
+
         public Room GetRoomWithSpecificNumber(int no)
         {
             return _dbCollection.Find(r => r.RoomNumber == no).SingleOrDefault();
+        }
+
+        public Room GetBirthRoomWithSpecificNumber(int no)
+        {
+            return _dbCollection.Find(r => r.RoomType == "BirthRoom" && r.RoomNumber == no).SingleOrDefault();
+        }
+
+        public Room GetRestRoomWithSpecificNumber(int no)
+        {
+            return _dbCollection.Find(r => r.RoomType == "RestRoom" && r.RoomNumber == no).SingleOrDefault();
+        }
+
+        public Room GetMaternityRoomWithSpecificNumber(int no)
+        {
+            return _dbCollection.Find(r => r.RoomType == "MaternityRoom" && r.RoomNumber == no).SingleOrDefault();
         }
 
         public Room GetSingleRoom(string id)
@@ -28,14 +58,25 @@ namespace BirthClinicMongoDB.Repositories
             return _dbCollection.Find(r => r.RoomID == id).SingleOrDefault();
         }
 
+        public void DelRestRoom(Room room)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void AddAppointmentToRoom(string roomid, Appointment appointment)
         {
             _dbCollection.Find(r => r.RoomID == roomid).SingleOrDefault().Appointments.Add(appointment);
         }
 
-        public void AddRestRoom(Room room)
+
+        public void AddRoom(Room room)
         {
             _dbCollection.InsertOne(room);
+        }
+
+        public bool RoomsExist()
+        {
+            return _dbCollection.Find(FilterDefinition<Room>.Empty).Any();
         }
 
         public void DelRoom(Room room)
