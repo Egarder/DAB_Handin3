@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace TestEmilMongoRepository
 
             var roomToInsert = new BirthRoom()
             {
-                Appointments = new ObservableCollection<Appointment>(), 
+                AppointmentIds = new List<int> { 1 },
                 RoomNumber = 2,
                 RoomType = "BirthRoom"
             };

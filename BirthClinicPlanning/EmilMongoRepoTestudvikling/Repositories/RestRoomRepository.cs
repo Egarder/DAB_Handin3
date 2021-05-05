@@ -4,7 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using EmilMongoRepoTestudvikling.Domainmodels;
+using EmilMongoRepoTestudvikling.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using Polly;
 
 namespace EmilMongoRepoTestudvikling.Repositories
 {
@@ -12,35 +19,26 @@ namespace EmilMongoRepoTestudvikling.Repositories
     {
         public RestRoomRepository(IMongoDbContext context) : base(context)
         {
-        }
-        public void AddAppointmentToRoom(int roomid, Appointment appointment)
-        {
-            //_dbCollection.InsertOne()
-        }
 
-        public void AddRestRoom(RestRoom restRoom)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DelRestRoom(RestRoom restRoom)
-        {
-            throw new NotImplementedException();
         }
 
         public ObservableCollection<RestRoom> GetAllRestRoom()
         {
-            throw new NotImplementedException();
         }
 
-        public RestRoom GetRestRoomWithSpecificNumber(int no)
         {
-            throw new NotImplementedException();
         }
 
-        public RestRoom GetSingleRestRoom(int id)
         {
-            throw new NotImplementedException();
+        }
+
+        {
+        }
+
+        {
+        }
+
+        {
         }
     }
 }

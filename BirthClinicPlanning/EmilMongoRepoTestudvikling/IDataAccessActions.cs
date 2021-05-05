@@ -10,5 +10,6 @@ namespace EmilMongoRepoTestudvikling
     {
         public IAppointmentRepository Appointments { get; }
         public IBirthRoomRepository BirthRooms { get; }
+        public IRestRoomRepository RestRooms { get; }
     }
 }

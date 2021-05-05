@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -15,7 +16,7 @@ namespace EmilMongoRepoTestudvikling.Domainmodels
         public string RoomType { get; set; }
 
         public bool Occupied { get; set; }
-
-        public ObservableCollection<Appointment> Appointments { get; set; }
+        
+        public List<Appointment> Appointments { get; set; }
     }
 }
