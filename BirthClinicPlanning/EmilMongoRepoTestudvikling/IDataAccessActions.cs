@@ -12,5 +12,6 @@ namespace EmilMongoRepoTestudvikling
         public IBirthRoomRepository BirthRooms { get; }
         public IRestRoomRepository RestRooms { get; }
         public IClinicianRepository Clinicians { get; }
+        public IMaternityRoomRepository MaternityRooms { get; }
     }
 }

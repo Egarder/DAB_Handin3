@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EmilMongoRepoTestudvikling.Repositories.Interfaces
 {
-    public interface IMaternityRepository: IBaseRepository<MaternityRoom>
+    public interface IMaternityRoomRepository: IBaseRepository<MaternityRoom>
     {
         public ObservableCollection<MaternityRoom> GetAllMaternityRooms();
 

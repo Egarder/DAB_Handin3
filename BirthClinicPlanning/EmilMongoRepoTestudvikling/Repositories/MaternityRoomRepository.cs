@@ -10,7 +10,7 @@ using MongoDB.Bson;
 
 namespace EmilMongoRepoTestudvikling.Repositories
 {
-    public class MaternityRoomRepository: BaseRepository<MaternityRoom>, IMaternityRepository
+    public class MaternityRoomRepository: BaseRepository<MaternityRoom>, IMaternityRoomRepository
     {
         public MaternityRoomRepository(IMongoDbContext context) : base(context)
         {
