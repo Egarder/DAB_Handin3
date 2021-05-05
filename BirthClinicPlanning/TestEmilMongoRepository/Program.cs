@@ -105,9 +105,9 @@ namespace TestEmilMongoRepository
 
             ////==== Appointment delete test = Works! ====================================================
 
-            var tester = access.Appointments.getSingleAppointment("5");
+            //var tester = access.Appointments.getSingleAppointment("5");
 
-            access.Appointments.DelAppointment(tester);
+            //access.Appointments.DelAppointment(tester);
         }
 
     }
