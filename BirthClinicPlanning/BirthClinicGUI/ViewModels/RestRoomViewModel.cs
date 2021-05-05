@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BirthClinicMongoDB;
-using EmilMongoRepoTestudvikling;
-using EmilMongoRepoTestudvikling.Domainmodels;
+﻿using BirthClinicMongoDB;
+using BirthClinicMongoDB.Domainmodels;
 using Itenso.TimePeriod;
-using Polly;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
+using System;
+using System.Collections.ObjectModel;
 
 namespace BirthClinicGUI.ViewModels
 {
@@ -19,8 +13,8 @@ namespace BirthClinicGUI.ViewModels
         private IDataAccessActions access;
         private IDialogService _dialog;
 
-        private RestRoom _currentRestRoom;
-        public RestRoom CurrentRestRoom { 
+        private Room _currentRestRoom;
+        public Room CurrentRestRoom { 
             get=> _currentRestRoom; 
             set=>SetProperty(ref _currentRestRoom,value); }
 
@@ -72,7 +66,7 @@ namespace BirthClinicGUI.ViewModels
         {
             int roomNumber = int.Parse(parameters.GetValue<string>("Message"));
 
-            CurrentRestRoom = access.RestRooms.GetRestRoomWithSpecificNumber(roomNumber);
+            CurrentRestRoom = access.Rooms.GetRoomWithSpecificNumber(roomNumber);
 
             AppointmentsForRoom = CurrentRestRoom.Appointments;
 

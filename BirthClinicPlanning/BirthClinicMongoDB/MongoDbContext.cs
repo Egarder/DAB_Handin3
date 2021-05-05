@@ -501,44 +501,48 @@ namespace BirthClinicMongoDB
 
         private static void SeedRooms(IDataAccessActions modelBuilder)
         {
-            var rooms = new ObservableCollection<RestRoom>
+            var rooms = new ObservableCollection<Room>
             {
-                new RestRoom()
+                new Room()
                 {
                     RoomID = "1",
                     RoomNumber = 1,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "RestRoom"
                 },
-
-                new RestRoom()
+                new Room()
                 {
                     RoomID = "2",
                     RoomNumber = 2,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "RestRoom"
                 },
-                new RestRoom()
+                new Room()
                 {
                     RoomID = "3",
                     RoomNumber = 3,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "RestRoom"
                 },
-                new RestRoom()
+                new Room()
                 {
                     RoomID = "4",
                     RoomNumber = 4,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "RestRoom"
                 },
-                new RestRoom()
+                new Room()
                 {
                     RoomID = "5",
                     RoomNumber = 5,
-                    Occupied = false
-                }
+                    Occupied = false,
+                    RoomType = "RestRoom"
+                },
             };
 
             foreach (var room in rooms)
             {
-                 modelBuilder.RestRooms.AddRestRoom(room);
+                 modelBuilder.Rooms.AddRoom(room);
             }
 
             var matrooms = new ObservableCollection<MaternityRoom>
@@ -683,93 +687,93 @@ namespace BirthClinicMongoDB
             }
 
 
-            var birthrooms = new ObservableCollection<BirthRoom>
+            var birthrooms = new ObservableCollection<Room>
             {
-                new BirthRoom()
+                new Room()
                 {
                     RoomID = "28",
                     RoomNumber = 1,
                     Occupied = false
                 },
-                new BirthRoom()
+                new Room()
                 {
                     RoomID = "29",
                     RoomNumber = 2,
                     Occupied = false
                 },
-                new BirthRoom()
+                new Room()
                 {
                     RoomID = "30",
                     RoomNumber = 3,
                     Occupied = false
                 },
-                new BirthRoom()
+                new Room()
                 {
                     RoomID = "31",
                     RoomNumber = 4,
                     Occupied = false
                 },
-                new BirthRoom()
+                new Room()
                 {
                     RoomID = "32",
                     RoomNumber = 5,
                     Occupied = false
                 },
-                new BirthRoom()
+                new Room()
                 {
                     RoomID = "33",
                     RoomNumber = 6,
                     Occupied = false
                 },
-                new BirthRoom()
+                new Room()
                 {
                     RoomID = "34",
                     RoomNumber = 7,
                     Occupied = false
                 },
-                new BirthRoom()
+                new Room()
                 {
                     RoomID = "35",
                     RoomNumber = 8,
                     Occupied = false
                 },
-                new BirthRoom()
+                new Room()
                 {
                     RoomID = "36",
                     RoomNumber = 9,
                     Occupied = false
                 },
-                new BirthRoom()
+                new Room()
                 {
                     RoomID = "37",
                     RoomNumber = 10,
                     Occupied = false
                 },
-                new BirthRoom()
+                new Room()
                 {
                     RoomID = "38",
                     RoomNumber = 11,
                     Occupied = false
                 },
-                new BirthRoom()
+                new Room()
                 {
                     RoomID = "39",
                     RoomNumber = 12,
                     Occupied = false
                 },
-                new BirthRoom()
+                new Room()
                 {
                     RoomID = "40",
                     RoomNumber = 13,
                     Occupied = false
                 },
-                new BirthRoom()
+                new Room()
                 {
                     RoomID = "41",
                     RoomNumber = 14,
                     Occupied = false
                 },
-                new BirthRoom()
+                new Room()
                 {
                     RoomID = "42",
                     RoomNumber = 15,
