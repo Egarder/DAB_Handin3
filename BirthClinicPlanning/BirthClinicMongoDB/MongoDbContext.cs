@@ -501,44 +501,48 @@ namespace BirthClinicMongoDB
 
         private static void SeedRooms(IDataAccessActions modelBuilder)
         {
-            var rooms = new ObservableCollection<RestRoom>
+            var rooms = new ObservableCollection<Room>
             {
-                new RestRoom()
+                new Room()
                 {
                     RoomID = "1",
                     RoomNumber = 1,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "RestRoom"
                 },
-
-                new RestRoom()
+                new Room()
                 {
                     RoomID = "2",
                     RoomNumber = 2,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "RestRoom"
                 },
-                new RestRoom()
+                new Room()
                 {
                     RoomID = "3",
                     RoomNumber = 3,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "RestRoom"
                 },
-                new RestRoom()
+                new Room()
                 {
                     RoomID = "4",
                     RoomNumber = 4,
-                    Occupied = false
+                    Occupied = false,
+                    RoomType = "RestRoom"
                 },
-                new RestRoom()
+                new Room()
                 {
                     RoomID = "5",
                     RoomNumber = 5,
-                    Occupied = false
-                }
+                    Occupied = false,
+                    RoomType = "RestRoom"
+                },
             };
 
             foreach (var room in rooms)
             {
-                 modelBuilder.RestRooms.AddRestRoom(room);
+                 modelBuilder.Rooms.AddRoom(room);
             }
 
             var matrooms = new ObservableCollection<MaternityRoom>

@@ -5,16 +5,16 @@ namespace BirthClinicMongoDB.Repositories.Interfaces
 {
     public interface IRoomRepository : IBaseRepository<Room>
     {
-        public ObservableCollection<Room> GetAllRestRoom();
+        public ObservableCollection<Room> GetAllRooms();
 
-        public Room GetRestRoomWithSpecificNumber(int no);
+        public Room GetRoomWithSpecificNumber(int no);
 
-        public Room GetSingleRestRoom(string id);
+        public Room GetSingleRoom(string id);
 
-        public void DelRestRoom(Room restRoom);
+        public void DelRestRoom(Room room);
 
         public void AddAppointmentToRoom(string roomid, Appointment appointment);
 
-        public void AddRestRoom(Room restRoom);
+        public void AddRoom(Room restRoom);
     }
 }

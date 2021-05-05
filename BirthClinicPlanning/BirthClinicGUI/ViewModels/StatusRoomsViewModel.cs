@@ -37,14 +37,14 @@ namespace BirthClinicGUI.ViewModels
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
-            RestRooms = new ObservableCollection<RestRoom>();
-            RestRooms = access.RestRooms.GetAllRestRoom();
+            Rooms = new ObservableCollection<Room>();
+            Rooms = access.Rooms.GetAllRoom();
 
             BirthRooms = new ObservableCollection<Room>();
             BirthRooms = access.BirthRooms.GetAllBirthsRooms();
 
-            MaternityRooms = new ObservableCollection<MaternityRoom>();
-            MaternityRooms = access.MaternityRooms.GetAllMaternityRooms();
+            Rooms = new ObservableCollection<Room>();
+            Rooms = access.Rooms.GetAllRooms();
         }
 
         private string title = "StatusRoomsViewModel";
@@ -58,61 +58,39 @@ namespace BirthClinicGUI.ViewModels
 
         #region Rooms collections + CurrentRoom properties
 
-        private ObservableCollection<RestRoom> _restrooms;  //Restroom
+        private Room _currentRoom;
 
-        public ObservableCollection<RestRoom> RestRooms
+        public Room CurrentRoom
         {
-            get => _restrooms;
-            set => SetProperty(ref _restrooms, value);
+            get=>_currentRoom; 
+            set=>SetProperty(ref _currentRoom, value);
         }
 
-        private RestRoom _currentRestRoom;
-
-        public RestRoom CurrentRestRoom
+        public string CurrentRoomId
         {
-            get=>_currentRestRoom; 
-            set=>SetProperty(ref _currentRestRoom, value);
-        }
-
-        public string CurrentRestRoomId
-        {
-            get => CurrentRestRoom.RoomNumber.ToString();
+            get => CurrentRoom.RoomNumber.ToString();
         }
 
 
-        private ObservableCollection<Room> _birthRooms;  //Birthroom
-        public ObservableCollection<Room> BirthRooms
-        {
-            get => _birthRooms;
-            set => SetProperty(ref _birthRooms, value);
-        }
-        public Room CurrentBirthRoom { get; set; }
+        private ObservableCollection<Room> _rooms; //Room
 
-        public string CurrentBirthRoomId
+        public ObservableCollection<Room> Rooms
         {
-            get => CurrentBirthRoom.RoomNumber.ToString();
+            get => _rooms;
+            set => SetProperty(ref _rooms, value);
         }
 
+        private Room _currentRoom;
 
-        private ObservableCollection<MaternityRoom> _maternityrooms; //MaternityRoom
-
-        public ObservableCollection<MaternityRoom> MaternityRooms
+        public Room CurrentRoom
         {
-            get => _maternityrooms;
-            set => SetProperty(ref _maternityrooms, value);
+            get => _currentRoom;
+            set => SetProperty(ref _currentRoom, value);
         }
 
-        private MaternityRoom _currentMaternityRoom;
-
-        public MaternityRoom CurrentMaternityRoom
+        public string CurrentRoomId
         {
-            get => _currentMaternityRoom;
-            set => SetProperty(ref _currentMaternityRoom, value);
-        }
-
-        public string CurrentMaternityRoomId
-        {
-            get => CurrentMaternityRoom.RoomNumber.ToString();
+            get => CurrentRoom.RoomNumber.ToString();
         }
         #endregion
 
@@ -129,12 +107,12 @@ namespace BirthClinicGUI.ViewModels
 
         private void SelectRoomCommandExecute(string roomType)
         {
-            if (roomType == "RestRooms")
+            if (roomType == "Rooms")
             {
-                if (RestRoomIndex < 5)
+                if (RoomIndex < 5)
                 {
-                    CurrentRestRoom = RestRooms[RestRoomIndex];
-                    _dialog.ShowDialog("RestRoomView", new DialogParameters($"Message={CurrentRestRoom.RoomNumber}"), r => { });
+                    CurrentRoom = Rooms[RoomIndex];
+                    _dialog.ShowDialog("RoomView", new DialogParameters($"Message={CurrentRoom.RoomNumber}"), r => { });
                 }
 
                 else
@@ -152,12 +130,12 @@ namespace BirthClinicGUI.ViewModels
                     return;
             }
 
-            else if (roomType == "MaternityRooms")
+            else if (roomType == "Rooms")
             {
                 if (MaternityIndex < 22)
                 {
-                    CurrentMaternityRoom = MaternityRooms[MaternityIndex];
-                    _dialog.ShowDialog("MaternityRoomView", new DialogParameters($"Message={CurrentMaternityRoom.RoomNumber}"), r => { });
+                    CurrentRoom = Rooms[MaternityIndex];
+                    _dialog.ShowDialog("RoomView", new DialogParameters($"Message={CurrentRoom.RoomNumber}"), r => { });
                 }
 
                 else
@@ -167,11 +145,11 @@ namespace BirthClinicGUI.ViewModels
         #endregion
 
         #region Room indexes
-        private int _restRoomIndex;
-        public int RestRoomIndex
+        private int _RoomIndex;
+        public int RoomIndex
         {
-            get => _restRoomIndex;
-            set => _restRoomIndex = value;
+            get => _RoomIndex;
+            set => _RoomIndex = value;
         }
 
 
@@ -182,11 +160,11 @@ namespace BirthClinicGUI.ViewModels
             set => _birthRoomIndex = value;
         }
 
-        private int _maternityRoomIndex;
+        private int _RoomIndex;
         public int MaternityIndex
         {
-            get => _maternityRoomIndex;
-            set => _maternityRoomIndex = value;
+            get => _RoomIndex;
+            set => _RoomIndex = value;
         }
 
 
