@@ -21,7 +21,7 @@ namespace BirthClinicMongoDB.Repositories
                 .Include(c=>c.RoomID)
                 .Include(d=>d.StartTime)
                 .Include(e=>e.EndTime)
-                .Include(f=>f.Room)
+                .Include(f=>f.Room.RoomNumber)
                 .Include(t => t.Parents); //Add other properties
 
             var bson = _dbCollection.Find<Appointment>(app => app.AppointmentID == id).Project(projection)
