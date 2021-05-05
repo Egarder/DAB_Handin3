@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BirthClinicMongoDB.Repositories;
+using EmilMongoRepoTestudvikling;
 using EmilMongoRepoTestudvikling.Repositories;
 using EmilMongoRepoTestudvikling.Repositories.Interfaces;
 
-namespace EmilMongoRepoTestudvikling
+namespace BirthClinicMongoDB
 {
     public class DataAccessActions : IDataAccessActions
     {
