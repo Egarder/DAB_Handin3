@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using BirthClinicMongoDB.Domainmodels;
 using BirthClinicMongoDB.Repositories.Interfaces;
-using EmilMongoRepoTestudvikling;
 
 namespace BirthClinicMongoDB.Repositories
 {

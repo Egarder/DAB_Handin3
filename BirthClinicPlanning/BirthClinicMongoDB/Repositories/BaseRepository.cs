@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BirthClinicMongoDB.Repositories.Interfaces;
-using EmilMongoRepoTestudvikling;
 
 namespace BirthClinicMongoDB.Repositories
 {

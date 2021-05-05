@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BirthClinicMongoDB.Domainmodels;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using MongoDB.Bson;
-using MongoDB.Driver;
 
 namespace BirthClinicMongoDB.Repositories.Interfaces
 {
