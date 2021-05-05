@@ -45,34 +45,40 @@ namespace BirthClinicMongoDB.Repositories
 
         public ObservableCollection<Appointment> GetAllAppointments()
         {
-            ObservableCollection<Appointment> tempobjcollection = new ObservableCollection<Appointment>();
+            //ObservableCollection<Appointment> tempobjcollection = new ObservableCollection<Appointment>();
 
-            var projection = Builders<Appointment>.Projection
-                .Include(b => b.AppointmentID)
-                .Include(c => c.RoomID)
-                .Include(d => d.StartTime)
-                .Include(e => e.EndTime)
-                .Include(f => f.Room)
-                .Include(t => t.Parents); //Add other properties
+            //var projection = Builders<Appointment>.Projection
+            //    .Include(b => b.AppointmentID)
+            //    .Include(c => c.RoomID)
+            //    .Include(d => d.StartTime)
+            //    .Include(e => e.EndTime)
+            //    .Include(f => f.Room)
+            //    .Include(t => t.Parents); //Add other properties
 
-            var bson = _dbCollection.Find<Appointment>(app => app.AppointmentID !=null).Project(projection)
-                .ToList();
+            //var bson = _dbCollection.Find<Appointment>(app => app.AppointmentID !=null).Project(projection)
+            //    .ToList();
 
-            foreach (var item in bson)
-            {
-                var tempobj = new Appointment()
-                {
-                    AppointmentID = item.GetElement("AppointmentID").Value.AsString,
-                    RoomID = item.GetElement("RoomID").Value.AsInt32,
-                    StartTime = (DateTime)item.GetElement("StartTime").Value,
-                    EndTime = (DateTime)item.GetElement("EndTime").Value,
-                    Room = new Room() { RoomNumber = item.GetElement("Room: {RoomNumber}").Value.AsInt32 }
-                };
+            //foreach (var item in bson)
+            //{
+            //    var tempobj = new Appointment()
+            //    {
+            //        AppointmentID = item.GetElement("AppointmentID").Value.AsString,
+            //        RoomID = item.GetElement("RoomID").Value.AsInt32,
+            //        StartTime = (DateTime)item.GetElement("StartTime").Value,
+            //        EndTime = (DateTime)item.GetElement("EndTime").Value,
+            //        Room = new Room() { RoomNumber = item.GetElement("Room: {RoomNumber}").Value.AsInt32 }
+            //    };
 
-                tempobjcollection.Add(tempobj);
-            }
+            //    tempobjcollection.Add(tempobj);
+            //}
 
-            return tempobjcollection; 
+            //return tempobjcollection; 
+
+            var temp = _dbCollection.Find<Appointment>(app => app.AppointmentID != null).ToList();
+
+            ObservableCollection<Appointment> tempobjcollection = new ObservableCollection<Appointment>(temp);
+
+            return tempobjcollection;
         }
 
         public void Update(string id, Appointment appIn) =>
