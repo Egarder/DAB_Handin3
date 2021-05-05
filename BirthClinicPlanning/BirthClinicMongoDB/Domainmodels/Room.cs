@@ -6,6 +6,10 @@ namespace BirthClinicMongoDB.Domainmodels
 {
     public class Room
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string RoomBsonID { get; set; }
+
         [BsonElement("RoomID")]
         [JsonProperty("RoomID")]
         public string RoomID { get; set; }

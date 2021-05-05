@@ -16,27 +16,31 @@ namespace BirthClinicMongoDB.Repositories
 
         public Appointment GetSingleAppointment(string id)
         {
-            var projection = Builders<Appointment>.Projection
-                .Include(b => b.AppointmentID)
-                .Include(c=>c.RoomID)
-                .Include(d=>d.StartTime)
-                .Include(e=>e.EndTime)
-                .Include(f=>f.Room)
-                .Include(t => t.Parents); //Add other properties
+            //var projection = Builders<Appointment>.Projection
+            //    .Include(b => b.AppointmentID)
+            //    .Include(c=>c.RoomID)
+            //    .Include(d=>d.StartTime)
+            //    .Include(e=>e.EndTime)
+            //    .Include(f=>f.Room.RoomNumber)
+            //    .Include(t => t.Parents); //Add other properties
 
-            var bson = _dbCollection.Find<Appointment>(app => app.AppointmentID == id).Project(projection)
-                .FirstOrDefault();
+            //var bson = _dbCollection.Find<Appointment>(app => app.AppointmentID == id).Project(projection)
+            //    .FirstOrDefault();
 
-            var tempobj = new Appointment()
-            {
-                AppointmentID = bson.GetElement("AppointmentID").Value.AsString,
-                RoomID = bson.GetElement("RoomID").Value.AsInt32,
-                StartTime = (DateTime) bson.GetElement("StartTime").Value,
-                EndTime = (DateTime) bson.GetElement("EndTime").Value,
-                //Room = new Room() {RoomNumber = bson.GetElement("Room: {RoomNumber}").Value.AsInt32 }
-            };
+            //var tempobj = new Appointment()
+            //{
+            //    AppointmentID = bson.GetElement("AppointmentID").Value.AsString,
+            //    RoomID = bson.GetElement("RoomID").Value.AsInt32,
+            //    StartTime = (DateTime) bson.GetElement("StartTime").Value,
+            //    EndTime = (DateTime) bson.GetElement("EndTime").Value,
+            //    Room = new Room() {RoomNumber = bson.GetElement("RoomNumber}").Value.AsInt32 }
+            //};
 
-            return tempobj;
+            //return tempobj;
+
+            return _dbCollection.Find<Appointment>(a => a.AppointmentID == id).SingleOrDefault();
+
+            
         }
 
         public ObservableCollection<Appointment> GetAllAppointments()
