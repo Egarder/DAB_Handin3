@@ -68,9 +68,9 @@ namespace TestEmilMongoRepository
 
             ////===== Test af Appointment Repository getsingleappointment = Works!   But needs more methods....=====================
 
-            //var tester = access.Appointments.getSingleAppointment("4");
+            var tester = access.Appointments.GetSingleAppointment("5");
 
-            //Console.WriteLine(tester.Room);
+            Console.WriteLine(tester.Room.RoomNumber);
 
 
             //==== Test af Appointment Repo create = Works!========================================
@@ -78,14 +78,13 @@ namespace TestEmilMongoRepository
             //{
             //    AppointmentID = "5",
             //    Parents = new Parents() { DadCPR = "2003922955", DadFirstName = "Thom", DadLastName = "Poulsen", MomCPR = "2003922955", MomFirstName = "Karin", MomLastName = "poulsen" },
-            //    Room = new BirthRoom() { RoomNumber = 1},
+            //    Room = new BirthRoom() { RoomNumber = 1 },
             //    StartTime = Convert.ToDateTime("29-04-2021"),
             //    EndTime = Convert.ToDateTime("30-04-2021")
             //};
             //access.Appointments.AddAppointment(newapp);
 
-            //var test = access.Appointments.getSingleAppointments("6089acf4895344269ca820ec");
-            //Console.WriteLine($"{test.ToJson()}");
+
 
 
             //var test2 = access.Appointments.getAllAppointments();

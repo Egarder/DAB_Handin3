@@ -22,8 +22,9 @@ namespace BirthClinicMongoDB.Repositories
                 .Include(b => b.AppointmentID)
                 .Include(c=>c.RoomID)
                 .Include(d=>d.StartTime)
-                .Include(e=>e.EndTime);
-                //.Include(f=>f.Room); //Add other properties
+                .Include(e=>e.EndTime)
+                .Include(f=>f.Room)
+                .Include(t => t.Parents); //Add other properties
 
             var bson = _dbCollection.Find<Appointment>(app => app.AppointmentID == id).Project(projection)
                 .FirstOrDefault();
@@ -34,7 +35,7 @@ namespace BirthClinicMongoDB.Repositories
                 RoomID = bson.GetElement("RoomID").Value.AsInt32,
                 StartTime = (DateTime) bson.GetElement("StartTime").Value,
                 EndTime = (DateTime) bson.GetElement("EndTime").Value,
-                //Room = new Room() {RoomNumber = bson.GetElement("Room: {RoomNumber}").Value.AsInt32 }
+                Room = new Room() {RoomNumber = bson.GetElement("Room: {RoomNumber}").Value.AsInt32 }
             };
 
             return tempobj;
@@ -49,7 +50,8 @@ namespace BirthClinicMongoDB.Repositories
                 .Include(c => c.RoomID)
                 .Include(d => d.StartTime)
                 .Include(e => e.EndTime)
-                .Include(f => f.Room); //Add other properties
+                .Include(f => f.Room)
+                .Include(t => t.Parents); //Add other properties
 
             var bson = _dbCollection.Find<Appointment>(app => app.AppointmentID !=null).Project(projection)
                 .ToList();
@@ -62,7 +64,7 @@ namespace BirthClinicMongoDB.Repositories
                     RoomID = item.GetElement("RoomID").Value.AsInt32,
                     StartTime = (DateTime)item.GetElement("StartTime").Value,
                     EndTime = (DateTime)item.GetElement("EndTime").Value,
-                    //Room = item.GetElement("Room").
+                    Room = new Room() { RoomNumber = item.GetElement("Room: {RoomNumber}").Value.AsInt32 }
                 };
 
                 tempobjcollection.Add(tempobj);
