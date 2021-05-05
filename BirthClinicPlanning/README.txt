@@ -6,8 +6,7 @@ Step A:
 
 *2) If you want to use another connection string than the one stated above:
 
-*2.1) Open the "BirthClinicGUI" project in the solution explorer. Open the "ViewModels" folder and change the connectionstring stated in all of the ViewModel files. 
-     - They are to be found in the constructors of the classes.
+*2.1) Open the "BirthClinicMongoDB" project in the solution explorer. Open the file "MongoDbSettings" file and change the Connectionstring property. 
 
 
 ======================================   Now you are ready to run the application  =========================================
