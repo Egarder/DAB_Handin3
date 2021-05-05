@@ -18,7 +18,7 @@ namespace EmilMongoRepoTestudvikling.Repositories
         {
         }
 
-        public Appointment GetSingleAppointment(string id)
+        public Appointment getSingleAppointment(string id)
         {
             var projection = Builders<Appointment>.Projection.Include(b => b.AppointmentID).Include(c=>c.RoomID)
                 .Include(d=>d.StartTime)
@@ -34,13 +34,13 @@ namespace EmilMongoRepoTestudvikling.Repositories
                 RoomID = bson.GetElement("RoomID").Value.AsInt32,
                 StartTime = (DateTime) bson.GetElement("StartTime").Value,
                 EndTime = (DateTime) bson.GetElement("EndTime").Value,
-                Room = new Room() {RoomNumber = bson.GetElement("Room: {RoomNumber}").Value.AsInt32 }
+                //Room = new Room() {RoomNumber = bson.GetElement("Room: {RoomNumber}").Value.AsInt32 }
             };
 
             return tempobj;
         }
 
-        public ObservableCollection<Appointment> GetAllAppointments()
+        public ObservableCollection<Appointment> getAllAppointments()
         {
             return new ObservableCollection<Appointment>(_dbCollection.Find(new BsonDocument()).ToList());
         }
@@ -55,7 +55,9 @@ namespace EmilMongoRepoTestudvikling.Repositories
 
         public void DelAppointment(Appointment appointment)
         {
+            var id = appointment.AppointmentID;
 
+            _dbCollection.DeleteOneAsync(Builders<Appointment>.Filter.Eq("AppointmentID", id));
         }
 
         public MongoDbContext context

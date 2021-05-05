@@ -42,12 +42,12 @@ namespace TestEmilMongoRepository
 
             //Console.WriteLine($"{roomToPrint.RoomNumber}, {roomToPrint.Occupied}, {roomToPrint.RoomType}");
 
-            var roomsToPrint = testBirthRoomRepository.GetAllBirthsRooms();
+            //var roomsToPrint = testBirthRoomRepository.GetAllBirthsRooms();
 
-            foreach (var room in roomsToPrint)
-            {
-                Console.WriteLine($"{room.RoomNumber}, {room.Occupied}, {room.RoomType}");
-            }
+            //foreach (var room in roomsToPrint)
+            //{
+            //    Console.WriteLine($"{room.RoomNumber}, {room.Occupied}, {room.RoomType}");
+            //}
 
             ////==== DB context test = Works! ====================================================
             //var databaser = context.listDatabases();
@@ -63,8 +63,7 @@ namespace TestEmilMongoRepository
             //var list = access.Appointments.getAllAppointments();
             //foreach (var item in list)
             //{
-            //access.Appointments.Update(item.AppointmentID, item);
-            //Console.WriteLine(item.AppointmentID);
+            //    Console.WriteLine($"{item.AppointmentID},");
             //}
 
             ////===== Test af Appointment Repository getsingleappointment = Works!   But needs more methods....=====================
@@ -104,6 +103,11 @@ namespace TestEmilMongoRepository
             //    Console.WriteLine($"{item.AppointmentID}");
             //}
 
+            ////==== Appointment delete test = Works! ====================================================
+
+            //var tester = access.Appointments.getSingleAppointment("5");
+
+            //access.Appointments.DelAppointment(tester);
         }
 
     }
