@@ -69,7 +69,7 @@ namespace BirthClinicGUI.ViewModels
 
         internal void SetUpRoomsAppointmentsListInDb() 
         {
-            var room1 = access.RestRooms.GetSingleRestRoom(1); // skal have et andet id
+            var room1 = access.RestRooms.GetSingleRestRoom(""); // skal have et andet id
 
             var appoint1 = access.Appointments.GetSingleAppointment(room1.RoomID);
 
@@ -78,7 +78,7 @@ namespace BirthClinicGUI.ViewModels
             if (temp == null)
                 room1.Appointments.Add(appoint1);
 
-            var room2 = access.RestRooms.GetSingleRestRoom(2);
+            var room2 = access.RestRooms.GetSingleRestRoom(""); // skal have et andet id
 
             var appoint2 = access.Appointments.GetSingleAppointment(room2.RoomID);
 
