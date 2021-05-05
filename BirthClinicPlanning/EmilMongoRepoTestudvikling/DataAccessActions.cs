@@ -14,6 +14,7 @@ namespace EmilMongoRepoTestudvikling
         public IBirthRoomRepository BirthRooms { get; private set; }
         public IRestRoomRepository RestRooms { get; private set; }
         public IClinicianRepository Clinicians { get; private set; }
+        public IMaternityRoomRepository MaternityRooms { get; private set; }
 
         public DataAccessActions(MongoDbContext context)
         {

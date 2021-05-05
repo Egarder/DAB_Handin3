@@ -29,12 +29,12 @@ namespace TestEmilMongoRepository
 
             IBirthRoomRepository testBirthRoomRepository = new BirthRoomRepository(context);
 
-            var roomToInsert = new BirthRoom()
-            {
-                AppointmentIds = new List<int> { 1 },
-                RoomNumber = 2,
-                RoomType = "BirthRoom"
-            };
+            //var roomToInsert = new BirthRoom()
+            //{
+            //    AppointmentIds = new List<int> { 1 },
+            //    RoomNumber = 2,
+            //    RoomType = "BirthRoom"
+            //};
 
             //testBirthRoomRepository.AddBirthRoom(roomToInsert);
 
@@ -42,12 +42,12 @@ namespace TestEmilMongoRepository
 
             //Console.WriteLine($"{roomToPrint.RoomNumber}, {roomToPrint.Occupied}, {roomToPrint.RoomType}");
 
-            var roomsToPrint = testBirthRoomRepository.GetAllBirthsRooms();
+            //var roomsToPrint = testBirthRoomRepository.GetAllBirthsRooms();
 
-            foreach (var room in roomsToPrint)
-            {
-                Console.WriteLine($"{room.RoomNumber}, {room.Occupied}, {room.RoomType}");
-            }
+            //foreach (var room in roomsToPrint)
+            //{
+            //    Console.WriteLine($"{room.RoomNumber}, {room.Occupied}, {room.RoomType}");
+            //}
 
             ////==== DB context test = Works! ====================================================
             //var databaser = context.listDatabases();
@@ -60,12 +60,11 @@ namespace TestEmilMongoRepository
 
             ////===== Test af Appointment Repository getallappointments og update = Almost works....=====================
 
-            //var list = access.Appointments.getAllAppointments();
-            //foreach (var item in list)
-            //{
-            //access.Appointments.Update(item.AppointmentID, item);
-            //Console.WriteLine(item.AppointmentID);
-            //}
+            var list = access.Appointments.getAllAppointments();
+            foreach (var item in list)
+            {
+                Console.WriteLine($"{item.AppointmentID},");
+            }
 
             ////===== Test af Appointment Repository getsingleappointment = Works!   But needs more methods....=====================
 
