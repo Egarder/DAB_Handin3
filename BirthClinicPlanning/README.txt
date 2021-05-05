@@ -2,24 +2,15 @@ How to use the application:
 
 Step A:
 
-1) Choose a random connection string from your SQL server.
+1) If your mongodb connectionstring is: "mongodb://localhost:27017", then please jump to Step B. 
 
-2) Open the "BirthClinicPlanningDB" project, and open the "Context.cs" file. 
+*2) If you want to use another connection string than the one stated above:
 
-3) Replace the connection string with you own connection string in the "OnConfiguring()" method, AND edit the "Catalog" assignment to a name of your choice. 
-   Press save. 
-
-4) Set the "BirthClinicPlanningDB" project as your startup project. 
-
-5) Go to your "Package Manager Console" and set "Package source" to "All", AND "Default Project" as "BirthClinicPlanningDB".
-
-6) In the package manager console, type: "update-database", to apply the included migration files to the database. (The DB will be created on its own with seeded data) 
-
-7) Ensure that the tables has been created in your local database. 
+*2.1) Open the "BirthClinicGUI" project in the solution explorer. Open the "ViewModels" folder and change the connectionstring stated in all of the ViewModel files. 
+     - They are to be found in the constructors of the classes.
 
 
 ======================================   Now you are ready to run the application  =========================================
-
 
 Step B:
 
@@ -83,9 +74,10 @@ UC4 - Explore)
 
 ======================================   Clean up  =========================================
 
-
 Step D:
 
-1) Right click at the database at your local sql server, and delete the database. 
+1) Control that the data is as expected in your mongoDb by accessing the database from either your console or mongodbcompass application. 
+
+2) Delete the database
 
 Now you are ready to start over from step A. 

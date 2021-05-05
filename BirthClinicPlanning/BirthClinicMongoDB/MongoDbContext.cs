@@ -83,7 +83,7 @@ namespace BirthClinicMongoDB
                     Room = new Room() { RoomNumber = 7, RoomType = "MaternityRoom", RoomID = "2"},
                     Child = new Child() {BirthDate = new DateTime(2021, 07, 12), ChildID = "4", FirstName = "Tilde", LastName = "Mortensen", Length = 57, Weight = 3280},
                     Clinicians = new ObservableCollection<Clinician>() { modelBuilder.Clinicians.GetSingleClinician("3"), modelBuilder.Clinicians.GetSingleClinician("10") }
-            }
+                }
 
             };
 
