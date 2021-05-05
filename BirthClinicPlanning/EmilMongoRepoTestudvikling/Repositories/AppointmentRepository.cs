@@ -25,8 +25,8 @@ namespace EmilMongoRepoTestudvikling.Repositories
                 .Include(b => b.AppointmentID)
                 .Include(c=>c.RoomID)
                 .Include(d=>d.StartTime)
-                .Include(e=>e.EndTime);
-                //.Include(f=>f.Room); //Add other properties
+                .Include(e=>e.EndTime)
+                .Include(f=>f.Room); //Add other properties
 
             var bson = _dbCollection.Find<Appointment>(app => app.AppointmentID == id).Project(projection)
                 .FirstOrDefault();
@@ -37,7 +37,7 @@ namespace EmilMongoRepoTestudvikling.Repositories
                 RoomID = bson.GetElement("RoomID").Value.AsInt32,
                 StartTime = (DateTime) bson.GetElement("StartTime").Value,
                 EndTime = (DateTime) bson.GetElement("EndTime").Value,
-                //Room = new Room() {RoomNumber = bson.GetElement("Room: {RoomNumber}").Value.AsInt32 }
+                Room = new Room() {RoomNumber = bson.GetElement("Room: {RoomNumber}").Value.AsInt32 }
             };
 
             return tempobj;
