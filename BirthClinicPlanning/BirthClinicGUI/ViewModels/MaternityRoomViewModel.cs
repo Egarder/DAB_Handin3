@@ -20,7 +20,7 @@ namespace BirthClinicGUI.ViewModels
             set => SetProperty(ref _currentMaternityRoom, value);
         }
 
-        private ObservableCollection<Appointment> _appointmentsForRoom = new ObservableCollection<Appointment>();
+        private ObservableCollection<Appointment> _appointmentsForRoom = new ();
 
         public ObservableCollection<Appointment> AppointmentsForRoom
         {
@@ -43,7 +43,7 @@ namespace BirthClinicGUI.ViewModels
             get => _child;
             set => SetProperty(ref _child, value);
         }
-        private ObservableCollection<Clinician> _clinicians = new ObservableCollection<Clinician>();
+        private ObservableCollection<Clinician> _clinicians = new ();
 
         public ObservableCollection<Clinician> Clinicians
         {
@@ -78,7 +78,7 @@ namespace BirthClinicGUI.ViewModels
         {
             int roomid = int.Parse(parameters.GetValue<string>("Message"));
 
-            CurrentMaternityRoom = access.Rooms.GetRoomWithSpecificNumber(roomid);
+            CurrentMaternityRoom = access.Rooms.GetMaternityRoomWithSpecificNumber(roomid);
 
             
                 AppointmentsForRoom = CurrentMaternityRoom.Appointments;

@@ -43,11 +43,11 @@ namespace BirthClinicMongoDB
             if (!context.Clinicians.CliniciansExist())
                 SeedClinicians(context);
 
-            if(!context.Rooms.RoomsExist())
-                SeedRooms(context);
-
             if (!context.Appointments.AppointmentsExist())
                 SeedAppointments(context);
+
+            if (!context.Rooms.RoomsExist())
+                SeedRooms(context);
         }
 
         private static void SeedAppointments(IDataAccessActions modelBuilder)
@@ -59,8 +59,9 @@ namespace BirthClinicMongoDB
                     AppointmentID = "1",
                     StartTime = new DateTime(2021,06,07),
                     EndTime = new DateTime(2021,06,08),
-                    Parents = new Parents() { DadCPR = "2003922955", DadFirstName = "Thom", DadLastName = "Poulsen", MomCPR = "2003922955", MomFirstName = "Karin", MomLastName = "poulsen" },
-                    Room = new Room() { RoomNumber = 1, RoomType = "RestRoom"},
+                    Parents = new Parents() { DadCPR = "200188-2955", DadFirstName = "Thomas", DadLastName = "Poulsen", MomCPR = "081190-2954", MomFirstName = "Karin", MomLastName = "Poulsen" },
+                    Room = new Room() { RoomNumber = 1, RoomType = "RestRoom", RoomID = "1"},
+                    Clinicians = new ObservableCollection<Clinician>() { modelBuilder.Clinicians.GetSingleClinician("30"), modelBuilder.Clinicians.GetSingleClinician("37") }
                 },
 
                 new Appointment
@@ -68,9 +69,21 @@ namespace BirthClinicMongoDB
                     AppointmentID = "2",
                     StartTime = new DateTime(2021,07,08),
                     EndTime = new DateTime(2021,07,09),
-                    Parents = new Parents() { DadCPR = "2003922955", DadFirstName = "Thom", DadLastName = "Poulsen", MomCPR = "2003922955", MomFirstName = "Karin", MomLastName = "poulsen" },
-                    Room = new Room() { RoomNumber = 1, RoomType = "RestRoom"},
-                }
+                    Parents = new Parents() { DadCPR = "020784-5631", DadFirstName = "Jakob", DadLastName = "Bo Larsen", MomCPR = "150485-8942", MomFirstName = "Trine", MomLastName = "Larsen" },
+                    Room = new Room() { RoomNumber = 1, RoomType = "RestRoom", RoomID = "1"},
+                    Clinicians = new ObservableCollection<Clinician>() { modelBuilder.Clinicians.GetSingleClinician("1"), modelBuilder.Clinicians.GetSingleClinician("15") }
+                },
+
+                new Appointment
+                {
+                    AppointmentID = "3",
+                    StartTime = new DateTime(2021,07,12),
+                    EndTime = new DateTime(2021,07,13),
+                    Parents = new Parents() { DadCPR = "140881-3777", DadFirstName = "Kim", DadLastName = "Mortensen", MomCPR = "280383-2544", MomFirstName = "Ida", MomLastName = "Mortensen" },
+                    Room = new Room() { RoomNumber = 7, RoomType = "MaternityRoom", RoomID = "2"},
+                    Child = new Child() {BirthDate = new DateTime(2021, 07, 12), ChildID = "4", FirstName = "Tilde", LastName = "Mortensen", Length = 57, Weight = 3280},
+                    Clinicians = new ObservableCollection<Clinician>() { modelBuilder.Clinicians.GetSingleClinician("3"), modelBuilder.Clinicians.GetSingleClinician("10") }
+            }
 
             };
 
@@ -515,35 +528,44 @@ namespace BirthClinicMongoDB
                     RoomID = "1",
                     RoomNumber = 1,
                     Occupied = false,
-                    RoomType = "RestRoom"
+                    RoomType = "RestRoom",
+                    Appointments = new ObservableCollection<Appointment>()
+                    {
+                        modelBuilder.Appointments.GetSingleAppointmentByID("1"),
+                        modelBuilder.Appointments.GetSingleAppointmentByID("2")
+                    }
                 },
                 new Room()
                 {
                     RoomID = "2",
                     RoomNumber = 2,
                     Occupied = false,
-                    RoomType = "RestRoom"
+                    RoomType = "RestRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "3",
                     RoomNumber = 3,
                     Occupied = false,
-                    RoomType = "RestRoom"
+                    RoomType = "RestRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "4",
                     RoomNumber = 4,
                     Occupied = false,
-                    RoomType = "RestRoom"
+                    RoomType = "RestRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "5",
                     RoomNumber = 5,
                     Occupied = false,
-                    RoomType = "RestRoom"
+                    RoomType = "RestRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
             };
 
@@ -559,154 +581,179 @@ namespace BirthClinicMongoDB
                     RoomID = "6",
                     RoomNumber = 1,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "7",
                     RoomNumber = 2,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
+                    {
+                        modelBuilder.Appointments.GetSingleAppointmentByID("3")
+                    }
                 },
                 new Room()
                 {
                     RoomID = "8",
                     RoomNumber = 3,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "9",
                     RoomNumber = 4,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "10",
                     RoomNumber = 5,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "11",
                     RoomNumber = 6,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "12",
                     RoomNumber = 7,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "13",
                     RoomNumber = 8,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "14",
                     RoomNumber = 9,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "15",
                     RoomNumber = 10,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "16",
                     RoomNumber = 11,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "17",
                     RoomNumber = 12,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "18",
                     RoomNumber = 13,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "19",
                     RoomNumber = 14,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "20",
                     RoomNumber = 15,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "21",
                     RoomNumber = 16,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "22",
                     RoomNumber = 17,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "23",
                     RoomNumber = 18,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "24",
                     RoomNumber = 19,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "25",
                     RoomNumber = 20,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "26",
                     RoomNumber = 21,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "27",
                     RoomNumber = 22,
                     Occupied = false,
-                    RoomType = "MaternityRoom"
+                    RoomType = "MaternityRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
             };
 
@@ -723,105 +770,120 @@ namespace BirthClinicMongoDB
                     RoomID = "28",
                     RoomNumber = 1,
                     Occupied = false,
-                    RoomType = "BirthRoom"
+                    RoomType = "BirthRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "29",
                     RoomNumber = 2,
                     Occupied = false,
-                    RoomType = "BirthRoom"
+                    RoomType = "BirthRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "30",
                     RoomNumber = 3,
                     Occupied = false,
-                    RoomType = "BirthRoom"
+                    RoomType = "BirthRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "31",
                     RoomNumber = 4,
                     Occupied = false,
-                    RoomType = "BirthRoom"
+                    RoomType = "BirthRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "32",
                     RoomNumber = 5,
                     Occupied = false,
-                    RoomType = "BirthRoom"
+                    RoomType = "BirthRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "33",
                     RoomNumber = 6,
                     Occupied = false,
-                    RoomType = "BirthRoom"
+                    RoomType = "BirthRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "34",
                     RoomNumber = 7,
                     Occupied = false,
-                    RoomType = "BirthRoom"
+                    RoomType = "BirthRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "35",
                     RoomNumber = 8,
                     Occupied = false,
-                    RoomType = "BirthRoom"
+                    RoomType = "BirthRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "36",
                     RoomNumber = 9,
                     Occupied = false,
-                    RoomType = "BirthRoom"
+                    RoomType = "BirthRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "37",
                     RoomNumber = 10,
                     Occupied = false,
-                    RoomType = "BirthRoom"
+                    RoomType = "BirthRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "38",
                     RoomNumber = 11,
                     Occupied = false,
-                    RoomType = "BirthRoom"
+                    RoomType = "BirthRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "39",
                     RoomNumber = 12,
                     Occupied = false,
-                    RoomType = "BirthRoom"
+                    RoomType = "BirthRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "40",
                     RoomNumber = 13,
                     Occupied = false,
-                    RoomType = "BirthRoom"
+                    RoomType = "BirthRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "41",
                     RoomNumber = 14,
                     Occupied = false,
-                    RoomType = "BirthRoom"
+                    RoomType = "BirthRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 },
                 new Room()
                 {
                     RoomID = "42",
                     RoomNumber = 15,
                     Occupied = false,
-                    RoomType = "BirthRoom"
+                    RoomType = "BirthRoom",
+                    Appointments = new ObservableCollection<Appointment>()
                 }
             };
 

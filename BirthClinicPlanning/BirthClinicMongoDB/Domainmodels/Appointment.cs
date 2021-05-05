@@ -20,7 +20,7 @@ namespace BirthClinicMongoDB.Domainmodels
 
         [BsonElement("RoomID")]
         [JsonProperty("RoomID")]
-        public int RoomID { get; set; }
+        public string RoomID { get; set; }
 
         [BsonElement("Room")]
         [JsonProperty("Room")]

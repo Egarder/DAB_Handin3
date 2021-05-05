@@ -89,7 +89,7 @@ namespace BirthClinicGUI.ViewModels
                 return;
             }
 
-            Room roomToInsert = access.Rooms.GetRoomWithSpecificNumber(Appointment.Room.RoomNumber);
+            Room roomToInsert = access.Rooms.GetRestRoomWithSpecificNumber(Appointment.Room.RoomNumber);
 
             foreach (var appointment in roomToInsert.Appointments)
             {
@@ -101,7 +101,9 @@ namespace BirthClinicGUI.ViewModels
                         return;
                     } } }
 
-            roomToInsert.Appointments.Add(Appointment);
+            Appointment.Room = roomToInsert;
+            access.Rooms.UpdateRoom(roomToInsert);
+            access.Appointments.AddAppointment(Appointment);
         }
         public void AddAppointmentToBirthRoom()
         {
@@ -117,7 +119,10 @@ namespace BirthClinicGUI.ViewModels
                         return;
                     } } }
 
-            roomToInsert.Appointments.Add(Appointment);
+            Appointment.Room = roomToInsert;
+
+            access.Rooms.UpdateRoom(roomToInsert);
+            access.Appointments.AddAppointment(Appointment);
         }
 
         public void AddAppointmentToMaternityRoom()
@@ -137,7 +142,10 @@ namespace BirthClinicGUI.ViewModels
             _dialog.ShowDialog("BabyInformationView");
             Appointment.Child = ((App)Application.Current).Child;
 
-            roomToInsert.Appointments.Add(Appointment);
+            Appointment.Room = roomToInsert;
+
+            access.Rooms.UpdateRoom(roomToInsert);
+            access.Appointments.AddAppointment(Appointment);
         }
         #endregion
 

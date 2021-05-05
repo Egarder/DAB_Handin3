@@ -33,11 +33,6 @@ namespace BirthClinicMongoDB.Repositories
             return new ObservableCollection<Room>(_dbCollection.Find(r => r.RoomType == "MaternityRoom").ToList());
         }
 
-        public Room GetRoomWithSpecificNumber(int no)
-        {
-            return _dbCollection.Find(r => r.RoomNumber == no).SingleOrDefault();
-        }
-
         public Room GetBirthRoomWithSpecificNumber(int no)
         {
             return _dbCollection.Find(r => r.RoomType == "BirthRoom" && r.RoomNumber == no).SingleOrDefault();
@@ -82,6 +77,11 @@ namespace BirthClinicMongoDB.Repositories
         public void DelRoom(Room room)
         {
             _dbCollection.DeleteOne(r => r.RoomID == room.RoomID);
+        }
+
+        public void UpdateRoom(Room room)
+        {
+            _dbCollection.ReplaceOne(r => r.RoomID == room.RoomID, room);
         }
 
         public MongoDbContext context

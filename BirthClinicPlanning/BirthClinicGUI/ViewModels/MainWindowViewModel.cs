@@ -15,6 +15,7 @@ namespace BirthClinicGUI.ViewModels
     {
         private IDialogService _dialog;
         private ObservableCollection<Appointment> _appointments;
+        private string _clinicianTitle;
         private string _clinicianFirstName;
         private string _clinicianLastName;
         private IDataAccessActions access;
@@ -24,10 +25,17 @@ namespace BirthClinicGUI.ViewModels
             get => _clinicianFirstName;
             set => SetProperty(ref _clinicianFirstName, value);
         }
+        
         public string ClinicianLastName 
         { 
             get => _clinicianLastName;
             set => SetProperty(ref _clinicianLastName, value); 
+        }
+
+        public string ClinicianTitle
+        {
+            get => _clinicianTitle;
+            set => SetProperty(ref _clinicianTitle, value);
         }
 
         private int _appointmentIndex;
@@ -55,39 +63,12 @@ namespace BirthClinicGUI.ViewModels
 
             context.Seed(access);
 
-            SetUpRoomsAppointmentsListInDb(); //Setting up relation between seeded rooms and appointments
+            //SetUpRoomsAppointmentsListInDb(); //Setting up relation between seeded rooms and appointments
             
             Appointments = access.Appointments.GetAllAppointments();
             
             AppointmentIndex = 0;
 
-        }
-
-        private void SetUpRoomsAppointmentsListInDb() 
-        {
-            var room1 = access.Rooms.GetSingleRoom("1"); // RestRoom
-
-            var appoint1 = access.Appointments.GetSingleAppointment("1");
-
-            if (room1.Appointments != null)
-            {
-                var temp = room1.Appointments.Any(a => a.AppointmentID == appoint1.AppointmentID);
-
-                if (!temp)
-                    room1.Appointments.Add(appoint1);
-            }
-
-            var room2 = access.Rooms.GetSingleRoom("2"); // RestRoom
-
-            var appoint2 = access.Appointments.GetSingleAppointment("2");
-
-            if (room2.Appointments != null)
-            {
-                var temp2 = room2.Appointments.Any(b => b.AppointmentID == appoint2.AppointmentID);
-
-                if (!temp2)
-                    room2.Appointments.Add(appoint2);
-            }
         }
 
         private ICommand _addAppointmentCommand;
@@ -122,7 +103,7 @@ namespace BirthClinicGUI.ViewModels
 
         private void DelAppointmentCommandExecute()
         {
-            var temp = access.Appointments.GetSingleAppointment(Appointments[AppointmentIndex].AppointmentID);
+            var temp = access.Appointments.GetSingleAppointment(Appointments[AppointmentIndex].AppointmentBsonId);
             
             access.Appointments.DelAppointment(temp);
 
@@ -151,7 +132,7 @@ namespace BirthClinicGUI.ViewModels
             }
             else
             {
-                string id = Appointments[AppointmentIndex].AppointmentID.ToString();
+                string id = Appointments[AppointmentIndex].AppointmentBsonId;
                 _dialog.ShowDialog("SpecificAppointmentView", new DialogParameters($"Message={id}"), r =>
                 {
                 });
@@ -197,17 +178,18 @@ namespace BirthClinicGUI.ViewModels
 
         private void AddClinicianCanExcecute()
         {
-            if ((ClinicianFirstName == "" || ClinicianLastName == ""))
+            if ((ClinicianTitle == "" || ClinicianFirstName == "" || ClinicianLastName == ""))
                 MessageBox.Show("Please fill out all required fields", "Error", MessageBoxButton.OK,
                     MessageBoxImage.Error);
 
             else
             {
-                Clinician newClinician = new Clinician() { FirstName = ClinicianFirstName, LastName = ClinicianLastName };
+                Clinician newClinician = new Clinician() {Type = ClinicianTitle, FirstName = ClinicianFirstName, LastName = ClinicianLastName };
                 access.Clinicians.AddClinician(newClinician);
 
-                MessageBox.Show("Clinician " + ClinicianFirstName + " " + ClinicianLastName + " added", "Clinician added", MessageBoxButton.OK);
+                MessageBox.Show("Clinician " + ClinicianTitle + " " + ClinicianFirstName + " " + ClinicianLastName + " added", "Clinician added", MessageBoxButton.OK);
 
+                ClinicianTitle = "";
                 ClinicianFirstName = "";
                 ClinicianLastName = "";
             }

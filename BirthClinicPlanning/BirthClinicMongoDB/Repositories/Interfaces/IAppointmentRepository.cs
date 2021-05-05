@@ -7,6 +7,8 @@ namespace BirthClinicMongoDB.Repositories.Interfaces
     {
         public Appointment GetSingleAppointment(string id);
 
+        public Appointment GetSingleAppointmentByID(string id);
+
         public ObservableCollection<Appointment> GetAllAppointments();
 
         public void Update(string id, Appointment appIn);
@@ -16,5 +18,9 @@ namespace BirthClinicMongoDB.Repositories.Interfaces
         public void DelAppointment(Appointment appointment);
 
         public bool AppointmentsExist();
+
+        public void UpdateAppointment(Appointment appointment);
+
+        public long CountAppointments();
     }
 }

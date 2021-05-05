@@ -20,7 +20,7 @@ namespace BirthClinicGUI.ViewModels
             set => SetProperty(ref _currentBirthRoom, value);
         }
 
-        private ObservableCollection<Appointment> _appointmentsForRoom = new ObservableCollection<Appointment>();
+        private ObservableCollection<Appointment> _appointmentsForRoom = new ();
 
         public ObservableCollection<Appointment> AppointmentsForRoom
         {
@@ -36,7 +36,7 @@ namespace BirthClinicGUI.ViewModels
             set => SetProperty(ref _parents, value);
         }
 
-        private ObservableCollection<Clinician> _clinicians = new ObservableCollection<Clinician>();
+        private ObservableCollection<Clinician> _clinicians = new ();
 
         public ObservableCollection<Clinician> Clinicians
         {

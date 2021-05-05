@@ -33,5 +33,10 @@ namespace BirthClinicMongoDB.Repositories
         {
             return _dbCollection.Find(c => c.ClinicianID == id).SingleOrDefault();
         }
+
+        public void UpdateClinician(Clinician clinician)
+        {
+            _dbCollection.ReplaceOne(c => c.ClinicianID == clinician.ClinicianID, clinician);
+        }
     }
 }

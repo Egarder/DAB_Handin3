@@ -124,27 +124,38 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
+
                     <Label Grid.Row="0" Grid.Column="0" 
-                           Content="Clinician First name:*"
+                           Content="Title:*"
                            Margin="5"/>
 
                     <TextBox Grid.Row="0" Grid.Column="1"
+                             Text="{Binding ClinicianTitle}"
+                             MinWidth="100"
+                             Margin="5"
+                             Name="txbTitle"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" 
+                           Content="First name:*"
+                           Margin="5"/>
+
+                    <TextBox Grid.Row="1" Grid.Column="1"
                              Text="{Binding ClinicianFirstName}"
                              MinWidth="100"
                              Margin="5"
                              Name="txbFirstName"/>
 
-                    <Label Grid.Row="1" Grid.Column="0"
-                           Content="Clinician Last name:*"
+                    <Label Grid.Row="2" Grid.Column="0"
+                           Content="Last name:*"
                            Margin="5"/>
 
-                    <TextBox Grid.Row="1" Grid.Column="1"
+                    <TextBox Grid.Row="2" Grid.Column="1"
                              Text="{Binding ClinicianLastName}"
                              MinWidth="100"
                              Margin="5"
                              Name="txbLastName"/>
 
-                    <Button Grid.Row="2" Grid.Column="0"
+                    <Button Grid.Row="3" Grid.Column="0"
                             Command="{Binding AddClinician}"
                             Content="Add Clinitian"
                             Margin="5"
