@@ -17,6 +17,6 @@ namespace EmilMongoRepoTestudvikling.Domainmodels
 
         public bool Occupied { get; set; }
         
-        public List<Appointment> Appointments { get; set; }
+        public ObservableCollection<Appointment> Appointments { get; set; }
     }
 }

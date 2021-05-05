@@ -94,8 +94,6 @@ namespace BirthClinicGUI.ViewModels
                     Occupied = false;
                 }
             }
-
-            access.Complete();
         }
 
         public string Title { get; }

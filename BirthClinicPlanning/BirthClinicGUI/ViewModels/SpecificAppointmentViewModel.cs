@@ -49,7 +49,7 @@ namespace BirthClinicGUI.ViewModels
         public void OnDialogOpened(IDialogParameters parameters)
         {
             string id = parameters.GetValue<string>("Message");
-            Appointment = access.Appointments.getSingleAppointment(id);
+            Appointment = access.Appointments.GetSingleAppointment(id);
             
             RoomType = new ObservableCollection<string>() { "Birth Room", "Maternity Room", "Rest Room" };
         }

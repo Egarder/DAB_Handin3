@@ -120,11 +120,11 @@ namespace BirthClinicGUI.ViewModels
 
         private void DelAppointmentCommandExecute()
         {
-            var temp = access.Appointments.getSingleAppointment(Appointments[AppointmentIndex].AppointmentID);
+            var temp = access.Appointments.GetSingleAppointment(Appointments[AppointmentIndex].AppointmentID);
             
             access.Appointments.DelAppointment(temp);
 
-            Appointments = access.Appointments.getAllAppointments();
+            Appointments = access.Appointments.GetAllAppointments();
         }
 
 
@@ -153,7 +153,7 @@ namespace BirthClinicGUI.ViewModels
                 _dialog.ShowDialog("SpecificAppointmentView", new DialogParameters($"Message={id}"), r =>
                 {
                 });
-                Appointments = access.Appointments.getAllAppointments();
+                Appointments = access.Appointments.GetAllAppointments();
             }
         }
 
@@ -176,7 +176,7 @@ namespace BirthClinicGUI.ViewModels
                 {
                     if (r.Result == ButtonResult.OK)
                     {
-                        Appointments = access.Appointments.getAllAppointments();
+                        Appointments = access.Appointments.GetAllAppointments();
                     }
                 }
             });
@@ -203,7 +203,6 @@ namespace BirthClinicGUI.ViewModels
             {
                 Clinician newClinician = new Clinician() { FirstName = ClinicianFirstName, LastName = ClinicianLastName };
                 access.Clinicians.AddClinician(newClinician);
-                access.Complete();
 
                 MessageBox.Show("Clinician " + ClinicianFirstName + " " + ClinicianLastName + " added", "Clinician added", MessageBoxButton.OK);
 
