@@ -1,5 +1,4 @@
-﻿using BirthClinicPlanningMongoDbWebAPI.DomainObjects;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -18,7 +17,7 @@ namespace EmilMongoRepoTestudvikling.Repositories.Interfaces
 
         public void DelRestRoom(RestRoom restRoom);
 
-        public void AddAppointmentToRoom(int roomid, Appointment appointment);
+        public void AddAppointmentToRoom(string roomid, Appointment appointment);
 
         public void AddRestRoom(RestRoom restRoom);
     }
