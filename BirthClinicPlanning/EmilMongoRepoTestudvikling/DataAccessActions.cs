@@ -13,6 +13,7 @@ namespace EmilMongoRepoTestudvikling
         public IAppointmentRepository Appointments { get; private set; }
         public IBirthRoomRepository BirthRooms { get; private set; }
         public IRestRoomRepository RestRooms { get; private set; }
+        public IClinicianRepository Clinicians { get; private set; }
 
         public DataAccessActions(MongoDbContext context)
         {
@@ -20,6 +21,7 @@ namespace EmilMongoRepoTestudvikling
             Appointments = new AppointmentRepository(_context);
             BirthRooms = new BirthRoomRepository(_context);
             RestRooms = new RestRoomRepository(_context);
+            Clinicians = new ClinicianRepository(_context);
         }
     }
 }

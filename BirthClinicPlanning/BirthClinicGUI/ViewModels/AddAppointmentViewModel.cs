@@ -11,12 +11,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
-using BirthClinicPlanningDB;
-using BirthClinicPlanningDB.DomainObjects;
 using Itenso.TimePeriod;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
+using EmilMongoRepoTestudvikling;
+using EmilMongoRepoTestudvikling.Domainmodels;
+using EmilMongoRepoTestudvikling.Repositories;
+using EmilMongoRepoTestudvikling.Repositories.Interfaces;
 
 namespace BirthClinicGUI.ViewModels
 {
@@ -33,14 +35,21 @@ namespace BirthClinicGUI.ViewModels
         public bool CanClose { get; set; }
 
         #endregion
-
-        private IDataAccessActions access = new DataAccessActions(new Context());
+        private IMongoDbSettings settings = new MongoDbSettings();
+        
+        private IDataAccessActions access;
         private bool _okButtonPressed;
         private IDialogService _dialog;
 
         public AddAppointmentViewModel(IDialogService dialog)
         {
             _dialog = dialog;
+
+            settings.ConnectionString = "mongodb://localhost:27017";
+            settings.DatabaseName = "BirthClinicPlanning";
+            var context = new MongoDbContext(settings.ConnectionString, settings.DatabaseName);
+
+            access = new DataAccessActions(context);
         }
 
         public bool CanCloseDialog()
@@ -150,7 +159,7 @@ namespace BirthClinicGUI.ViewModels
         {
             CanClose = true;
 
-            AllClinicians = access.Clinicians.GetAllClinicians(); 
+            AllClinicians = access.Clinicians.GetAllClinicians();
 
             RoomType = new ObservableCollection<string>() {"Birth Room", "Maternity Room", "Rest Room"};
 
