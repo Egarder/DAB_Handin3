@@ -59,6 +59,8 @@ namespace BirthClinicMongoDB
                     AppointmentID = "1",
                     StartTime = new DateTime(2021,06,07),
                     EndTime = new DateTime(2021,06,08),
+                    Parents = new Parents() { DadCPR = "2003922955", DadFirstName = "Thom", DadLastName = "Poulsen", MomCPR = "2003922955", MomFirstName = "Karin", MomLastName = "poulsen" },
+                    Room = new Room() { RoomNumber = 1, RoomType = "RestRoom"},
                 },
 
                 new Appointment
@@ -66,6 +68,8 @@ namespace BirthClinicMongoDB
                     AppointmentID = "2",
                     StartTime = new DateTime(2021,07,08),
                     EndTime = new DateTime(2021,07,09),
+                    Parents = new Parents() { DadCPR = "2003922955", DadFirstName = "Thom", DadLastName = "Poulsen", MomCPR = "2003922955", MomFirstName = "Karin", MomLastName = "poulsen" },
+                    Room = new Room() { RoomNumber = 1, RoomType = "RestRoom"},
                 }
 
             };

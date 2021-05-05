@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using BirthClinicMongoDB.Domainmodels;
 using BirthClinicMongoDB.Repositories.Interfaces;
+using MongoDB.Bson;
 
 namespace BirthClinicMongoDB.Repositories
 {
@@ -74,11 +75,8 @@ namespace BirthClinicMongoDB.Repositories
 
             //return tempobjcollection; 
 
-            var temp = _dbCollection.Find<Appointment>(app => app.AppointmentID != null).ToList();
 
-            ObservableCollection<Appointment> tempobjcollection = new ObservableCollection<Appointment>(temp);
-
-            return tempobjcollection;
+            return new ObservableCollection<Appointment>(_dbCollection.Find(new BsonDocument()).ToList()); ;
         }
 
         public void Update(string id, Appointment appIn) =>
