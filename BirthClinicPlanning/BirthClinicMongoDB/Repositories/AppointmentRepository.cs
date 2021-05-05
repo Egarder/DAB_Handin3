@@ -13,14 +13,17 @@ namespace BirthClinicMongoDB.Repositories
     {
         public AppointmentRepository(IMongoDbContext context) : base(context)
         {
+
         }
 
         public Appointment GetSingleAppointment(string id)
         {
-            var projection = Builders<Appointment>.Projection.Include(b => b.AppointmentID).Include(c=>c.RoomID)
+            var projection = Builders<Appointment>.Projection
+                .Include(b => b.AppointmentID)
+                .Include(c=>c.RoomID)
                 .Include(d=>d.StartTime)
-                .Include(e=>e.EndTime)
-                .Include(f=>f.Room); //Add other properties
+                .Include(e=>e.EndTime);
+                //.Include(f=>f.Room); //Add other properties
 
             var bson = _dbCollection.Find<Appointment>(app => app.AppointmentID == id).Project(projection)
                 .FirstOrDefault();
@@ -31,7 +34,7 @@ namespace BirthClinicMongoDB.Repositories
                 RoomID = bson.GetElement("RoomID").Value.AsInt32,
                 StartTime = (DateTime) bson.GetElement("StartTime").Value,
                 EndTime = (DateTime) bson.GetElement("EndTime").Value,
-                Room = new Room() {RoomNumber = bson.GetElement("Room: {RoomNumber}").Value.AsInt32 }
+                //Room = new Room() {RoomNumber = bson.GetElement("Room: {RoomNumber}").Value.AsInt32 }
             };
 
             return tempobj;
@@ -39,7 +42,33 @@ namespace BirthClinicMongoDB.Repositories
 
         public ObservableCollection<Appointment> GetAllAppointments()
         {
-            return new ObservableCollection<Appointment>(_dbCollection.Find(new BsonDocument()).ToList());
+            ObservableCollection<Appointment> tempobjcollection = new ObservableCollection<Appointment>();
+
+            var projection = Builders<Appointment>.Projection
+                .Include(b => b.AppointmentID)
+                .Include(c => c.RoomID)
+                .Include(d => d.StartTime)
+                .Include(e => e.EndTime)
+                .Include(f => f.Room); //Add other properties
+
+            var bson = _dbCollection.Find<Appointment>(app => app.AppointmentID !=null).Project(projection)
+                .ToList();
+
+            foreach (var item in bson)
+            {
+                var tempobj = new Appointment()
+                {
+                    AppointmentID = item.GetElement("AppointmentID").Value.AsString,
+                    RoomID = item.GetElement("RoomID").Value.AsInt32,
+                    StartTime = (DateTime)item.GetElement("StartTime").Value,
+                    EndTime = (DateTime)item.GetElement("EndTime").Value,
+                    //Room = item.GetElement("Room").
+                };
+
+                tempobjcollection.Add(tempobj);
+            }
+
+            return tempobjcollection; 
         }
 
         public void Update(string id, Appointment appIn) =>
@@ -52,7 +81,9 @@ namespace BirthClinicMongoDB.Repositories
 
         public void DelAppointment(Appointment appointment)
         {
+            var id = appointment.AppointmentID;
 
+            _dbCollection.DeleteOneAsync(Builders<Appointment>.Filter.Eq("AppointmentID", id));
         }
 
         public MongoDbContext context
