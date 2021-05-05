@@ -29,12 +29,12 @@ namespace TestEmilMongoRepository
 
             IBirthRoomRepository testBirthRoomRepository = new BirthRoomRepository(context);
 
-            //var roomToInsert = new BirthRoom()
-            //{
-            //    AppointmentIds = new List<int> { 1 },
-            //    RoomNumber = 2,
-            //    RoomType = "BirthRoom"
-            //};
+            var roomToInsert = new BirthRoom()
+            {
+                Appointments = new ObservableCollection<Appointment>(),
+                RoomNumber = 2,
+                RoomType = "BirthRoom"
+            };
 
             //testBirthRoomRepository.AddBirthRoom(roomToInsert);
 
