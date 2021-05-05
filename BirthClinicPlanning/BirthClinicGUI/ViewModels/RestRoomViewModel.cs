@@ -4,9 +4,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BirthClinicPlanningDB;
-using BirthClinicPlanningDB.DomainObjects;
+using EmilMongoRepoTestudvikling;
+using EmilMongoRepoTestudvikling.Domainmodels;
 using Itenso.TimePeriod;
+using Polly;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 

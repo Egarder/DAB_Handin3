@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using BirthClinicPlanningDB.DomainObjects;
+using EmilMongoRepoTestudvikling.Domainmodels;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;

@@ -1,24 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Input;
+﻿using EmilMongoRepoTestudvikling;
+using EmilMongoRepoTestudvikling.Domainmodels;
 using Itenso.TimePeriod;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
-using EmilMongoRepoTestudvikling;
-using EmilMongoRepoTestudvikling.Domainmodels;
-using EmilMongoRepoTestudvikling.Repositories;
-using EmilMongoRepoTestudvikling.Repositories.Interfaces;
+using System;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Input;
 
 namespace BirthClinicGUI.ViewModels
 {
@@ -35,8 +24,7 @@ namespace BirthClinicGUI.ViewModels
         public bool CanClose { get; set; }
 
         #endregion
-        private IMongoDbSettings settings = new MongoDbSettings();
-        
+
         private IDataAccessActions access;
         private bool _okButtonPressed;
         private IDialogService _dialog;
@@ -45,6 +33,7 @@ namespace BirthClinicGUI.ViewModels
         {
             _dialog = dialog;
 
+            IMongoDbSettings settings = new MongoDbSettings();
             settings.ConnectionString = "mongodb://localhost:27017";
             settings.DatabaseName = "BirthClinicPlanning";
             var context = new MongoDbContext(settings.ConnectionString, settings.DatabaseName);
