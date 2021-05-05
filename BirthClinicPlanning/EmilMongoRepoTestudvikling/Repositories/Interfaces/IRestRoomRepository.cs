@@ -14,6 +14,7 @@ namespace EmilMongoRepoTestudvikling.Repositories.Interfaces
 
         public RestRoom GetRestRoomWithSpecificNumber(int no);
 
+        public RestRoom GetSingleRestRoom(string id);
 
         public void DelRestRoom(RestRoom restRoom);
 

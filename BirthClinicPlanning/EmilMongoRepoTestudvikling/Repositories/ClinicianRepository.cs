@@ -1,5 +1,4 @@
-﻿using BirthClinicPlanningMongoDbWebAPI.DomainObjects;
-using EmilMongoRepoTestudvikling.Repositories.Interfaces;
+﻿using EmilMongoRepoTestudvikling.Repositories.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
@@ -7,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using EmilMongoRepoTestudvikling.Domainmodels;
 
 namespace EmilMongoRepoTestudvikling.Repositories
 {
@@ -27,9 +27,7 @@ namespace EmilMongoRepoTestudvikling.Repositories
 
         public Clinician GetSingleClinician(string id)
         {
-            var cliID = new ObjectId(id);
-            var filter = Builders<Clinician>.Filter.Eq(cli => cli.Id, cliID);
-            return _dbCollection.Find(filter).FirstOrDefault();
+            return _dbCollection.Find(c => c.ClinicianID == id).SingleOrDefault();
         }
     }
 }

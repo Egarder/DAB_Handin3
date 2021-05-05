@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Input;
-using BirthClinicPlanningDB;
-using BirthClinicPlanningDB.DomainObjects;
+using EmilMongoRepoTestudvikling;
+using EmilMongoRepoTestudvikling.Domainmodels;
 using ImTools;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -22,7 +22,8 @@ namespace BirthClinicGUI.ViewModels
         private ObservableCollection<Appointment> _appointments;
         private string _clinicianFirstName;
         private string _clinicianLastName;
-        private IDataAccessActions access = new DataAccessActions(new Context());
+        private IDataAccessActions access;
+
         public string ClinicianFirstName 
         { 
             get => _clinicianFirstName;
@@ -52,8 +53,15 @@ namespace BirthClinicGUI.ViewModels
             _dialog = dialog;
 
             SetUpRoomsAppointmentsListInDb(); //Setting up relation between seeded rooms and appointments
-            
-            Appointments = access.Appointments.getAllAppointments();
+
+            IMongoDbSettings settings = new MongoDbSettings();
+            settings.ConnectionString = "mongodb://localhost:27017";
+            settings.DatabaseName = "BirthClinicPlanning";
+            var context = new MongoDbContext(settings.ConnectionString, settings.DatabaseName);
+
+            access = new DataAccessActions(context);
+
+            Appointments = access.Appointments.GetAllAppointments();
             
             AppointmentIndex = 0;
 
@@ -61,9 +69,9 @@ namespace BirthClinicGUI.ViewModels
 
         internal void SetUpRoomsAppointmentsListInDb() 
         {
-            var room1 = access.RestRooms.GetSingleRestRoom(1);
+            var room1 = access.RestRooms.GetSingleRestRoom(1); // skal have et andet id
 
-            var appoint1 = access.Appointments.getSingleAppointment(1);
+            var appoint1 = access.Appointments.GetSingleAppointment(room1.RoomID);
 
             var temp = room1.Appointments.FindFirst(a => a.AppointmentID == appoint1.AppointmentID);
 
@@ -72,14 +80,12 @@ namespace BirthClinicGUI.ViewModels
 
             var room2 = access.RestRooms.GetSingleRestRoom(2);
 
-            var appoint2 = access.Appointments.getSingleAppointment(2);
+            var appoint2 = access.Appointments.GetSingleAppointment(room2.RoomID);
 
             var temp2 = room2.Appointments.FindFirst(b => b.AppointmentID == appoint2.AppointmentID);
 
             if (temp2 == null)
                 room2.Appointments.Add(appoint2);
-
-            access.Complete();
         }
 
         private ICommand _addAppointmentCommand;
@@ -97,7 +103,7 @@ namespace BirthClinicGUI.ViewModels
         {
             _dialog.ShowDialog("AddAppointmentView", r =>
             {
-                Appointments = access.Appointments.getAllAppointments();
+                Appointments = access.Appointments.GetAllAppointments();
             });
         }
 
@@ -117,7 +123,6 @@ namespace BirthClinicGUI.ViewModels
             var temp = access.Appointments.getSingleAppointment(Appointments[AppointmentIndex].AppointmentID);
             
             access.Appointments.DelAppointment(temp);
-            access.Complete();
 
             Appointments = access.Appointments.getAllAppointments();
         }
