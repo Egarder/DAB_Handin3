@@ -56,7 +56,7 @@ namespace BirthClinicMongoDB.Repositories
 
             int i = temp.Count;
 
-            return temp[i];
+            return temp[i-1];
         }
 
         public MongoDbContext context
