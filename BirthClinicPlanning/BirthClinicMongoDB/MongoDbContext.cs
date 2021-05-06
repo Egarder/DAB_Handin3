@@ -529,11 +529,7 @@ namespace BirthClinicMongoDB
                     RoomNumber = 1,
                     Occupied = false,
                     RoomType = "RestRoom",
-                    Appointments = new ObservableCollection<Appointment>()
-                    {
-                        modelBuilder.Appointments.GetSingleAppointmentByID("1"),
-                        modelBuilder.Appointments.GetSingleAppointmentByID("2")
-                    }
+                    Appointments = modelBuilder.Appointments.GetNumberOfAppointments(2)
                 },
                 new Room()
                 {

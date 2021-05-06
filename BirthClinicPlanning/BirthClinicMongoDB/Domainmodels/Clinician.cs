@@ -29,10 +29,6 @@ namespace BirthClinicMongoDB.Domainmodels
         [JsonProperty("Type")]
         public string Type { get; set; }
 
-        [BsonElement("Appointments")]
-        [JsonProperty("Appointments")]
-        public ObservableCollection<Appointment> Appointments { get; set; }
-
         [NotMapped]
         public string Display
         {
