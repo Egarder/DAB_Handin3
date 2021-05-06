@@ -27,7 +27,7 @@ namespace BirthClinicMongoDB.Repositories
 
         public ObservableCollection<Appointment> GetAllAppointments()
         {
-            return new ObservableCollection<Appointment>(_dbCollection.Find(new BsonDocument()).ToList()); ;
+            return new ObservableCollection<Appointment>(_dbCollection.Find(new BsonDocument()).ToList()); 
         }
 
         public void Update(string id, Appointment appIn) =>
@@ -64,6 +64,15 @@ namespace BirthClinicMongoDB.Repositories
         public ObservableCollection<Appointment> GetNumberOfAppointments(int n)
         {
             return new ObservableCollection<Appointment>(_dbCollection.Find(x => true).Limit(n).ToList());
+        }
+
+        public Appointment ReturnLastAppointment()
+        {
+            var temp = new ObservableCollection<Appointment>(_dbCollection.Find(new BsonDocument()).ToList());
+
+            int i = temp.Count;
+
+            return temp[i];
         }
 
         public MongoDbContext context
