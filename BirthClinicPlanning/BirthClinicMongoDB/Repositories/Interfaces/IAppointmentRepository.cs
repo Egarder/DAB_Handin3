@@ -22,5 +22,7 @@ namespace BirthClinicMongoDB.Repositories.Interfaces
         public void UpdateAppointment(Appointment appointment);
 
         public long CountAppointments();
+
+        public Appointment ReturnLastAppointment();
     }
 }
