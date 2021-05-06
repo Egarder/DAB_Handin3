@@ -39,12 +39,6 @@ namespace BirthClinicMongoDB.Repositories
             return _dbCollection.Find(FilterDefinition<Appointment>.Empty).Any();
         }
 
-        public void UpdateAppointment(Appointment appointment)
-        {
-            _dbCollection.UpdateOne(a => a.AppointmentBsonId == appointment.AppointmentBsonId,
-                new ObjectUpdateDefinition<Appointment>(appointment.Room));
-        }
-
         public ObservableCollection<Appointment> GetNumberOfAppointments(int n)
         {
             return new ObservableCollection<Appointment>(_dbCollection.Find(x => true).Limit(n).ToList());

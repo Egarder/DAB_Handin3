@@ -56,7 +56,6 @@ namespace BirthClinicMongoDB
             {
                 new Appointment
                 {
-                    AppointmentID = "1",
                     StartTime = new DateTime(2021,06,07),
                     EndTime = new DateTime(2021,06,08),
                     Parents = new Parents() { DadCPR = "200188-2955", DadFirstName = "Thomas", DadLastName = "Poulsen", MomCPR = "081190-2954", MomFirstName = "Karin", MomLastName = "Poulsen" },
@@ -66,7 +65,6 @@ namespace BirthClinicMongoDB
 
                 new Appointment
                 {
-                    AppointmentID = "2",
                     StartTime = new DateTime(2021,07,08),
                     EndTime = new DateTime(2021,07,09),
                     Parents = new Parents() { DadCPR = "020784-5631", DadFirstName = "Jakob", DadLastName = "Bo Larsen", MomCPR = "150485-8942", MomFirstName = "Trine", MomLastName = "Larsen" },
@@ -76,7 +74,6 @@ namespace BirthClinicMongoDB
 
                 new Appointment
                 {
-                    AppointmentID = "3",
                     StartTime = new DateTime(2021,07,12),
                     EndTime = new DateTime(2021,07,13),
                     Parents = new Parents() { DadCPR = "140881-3777", DadFirstName = "Kim", DadLastName = "Mortensen", MomCPR = "280383-2544", MomFirstName = "Ida", MomLastName = "Mortensen" },
@@ -588,7 +585,7 @@ namespace BirthClinicMongoDB
                     RoomType = "MaternityRoom",
                     Appointments = new ObservableCollection<Appointment>()
                     {
-                        modelBuilder.Appointments.GetSingleAppointmentByID("3")
+                        modelBuilder.Appointments.
                     }
                 },
                 new Room()
