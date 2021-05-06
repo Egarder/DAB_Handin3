@@ -74,11 +74,6 @@ namespace BirthClinicMongoDB.Repositories
             return _dbCollection.Find(FilterDefinition<Room>.Empty).Any();
         }
 
-        public void DelRoom(Room room)
-        {
-            _dbCollection.DeleteOne(r => r.RoomID == room.RoomID);
-        }
-
         public void UpdateRoom(Room room, Appointment appointment)
         {
             var update = Builders<Room>.Update

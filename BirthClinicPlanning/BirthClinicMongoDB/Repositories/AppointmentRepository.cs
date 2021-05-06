@@ -12,7 +12,6 @@ namespace BirthClinicMongoDB.Repositories
     {
         public AppointmentRepository(IMongoDbContext context) : base(context)
         {
-
         }
 
         public Appointment GetSingleAppointment(string id)
@@ -20,18 +19,10 @@ namespace BirthClinicMongoDB.Repositories
             return _dbCollection.Find<Appointment>(a => a.AppointmentBsonId == id).SingleOrDefault();
         }
 
-        public Appointment GetSingleAppointmentByID(string id)
-        {
-            return _dbCollection.Find<Appointment>(a => a.AppointmentID == id).SingleOrDefault();
-        }
-
         public ObservableCollection<Appointment> GetAllAppointments()
         {
             return new ObservableCollection<Appointment>(_dbCollection.Find(new BsonDocument()).ToList()); ;
         }
-
-        public void Update(string id, Appointment appIn) =>
-            _dbCollection.ReplaceOne(app => app.AppointmentID == id, appIn);
 
         public void AddAppointment(Appointment app)
         {
@@ -52,13 +43,6 @@ namespace BirthClinicMongoDB.Repositories
         {
             _dbCollection.UpdateOne(a => a.AppointmentBsonId == appointment.AppointmentBsonId,
                 new ObjectUpdateDefinition<Appointment>(appointment.Room));
-
-            //_dbCollection.ReplaceOne(a => a.AppointmentID == appointment.AppointmentID, appointment);
-        }
-
-        public long CountAppointments()
-        {
-            return _dbCollection.CountDocuments(FilterDefinition<Appointment>.Empty);
         }
 
         public ObservableCollection<Appointment> GetNumberOfAppointments(int n)
