@@ -61,6 +61,11 @@ namespace BirthClinicMongoDB.Repositories
             return _dbCollection.CountDocuments(FilterDefinition<Appointment>.Empty);
         }
 
+        public ObservableCollection<Appointment> GetNumberOfAppointments(int n)
+        {
+            return new ObservableCollection<Appointment>(_dbCollection.Find(x => true).Limit(n).ToList());
+        }
+
         public MongoDbContext context
         {
             get { return context as MongoDbContext; }

@@ -14,14 +14,6 @@ namespace BirthClinicMongoDB.Domainmodels
         [BsonRepresentation(BsonType.ObjectId)]
         public string AppointmentBsonId { get; set; }
 
-        [BsonElement("AppointmentID")]
-        [JsonProperty("AppointmentID")]
-        public string AppointmentID { get; set; }
-
-        [BsonElement("RoomID")]
-        [JsonProperty("RoomID")]
-        public string RoomID { get; set; }
-
         [BsonElement("Room")]
         [JsonProperty("Room")]
         public Room Room { get; set; }

@@ -1,8 +1,8 @@
 ﻿namespace BirthClinicMongoDB
 {
-    public class MongoDbSettings: IMongoDbSettings
+    public static class MongoDbSettings
     {
-        public string DatabaseName { get; set; }
-        public string ConnectionString { get; set; }
+        public static string DatabaseName => "BirthClinicPlanning";
+        public static string ConnectionString => "mongodb://localhost:27017";
     }
 }
